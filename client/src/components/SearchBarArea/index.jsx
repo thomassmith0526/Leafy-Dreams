@@ -1,23 +1,23 @@
 import React, {useState} from "react";
 
-const SearchBar =() => {
-    const [searchPlanet, setSearchPlanet] = useState('');
+const BarSearch =() => {
+    const [searchArea, setSearchArea] = useState('');
 
-    const handleInputChange = (event) => {
-        setSearchPlanet(event.target.value);
+    const handleInputChange =(event) => {
+        setSearchArea(event.target.value);
     };
 
     const handleSearch = (event) => {
         event.preventDefault();
         //search logic
-        console.log('Searching for', searchPlanet);
+        console.log('Searching for', searchArea);
     };
 
     return (
-        <form onSubmit={ handleSearch}>
+        <form onSubmit={ handleSearch }>
             <input
                 type="text"
-                value = {searchPlanet}
+                value = {searchArea}
                 onChange={handleInputChange}
                 placeholder="Search"
                 />
@@ -26,23 +26,4 @@ const SearchBar =() => {
     );
 };
 
-export default SearchBar
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default BarSearch;
