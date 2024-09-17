@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    // "dev": "vite",
+    // "build": "vite build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server --ignore client",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
