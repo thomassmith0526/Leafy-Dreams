@@ -5,14 +5,15 @@ import SearchBarPlanet from '../../components/SearchBarPlanets';
 
 const Profile = () => {
     return (
-        <main>
-            <div className='flex row'>
+        <main> 
+            <h1>Profile</h1>
+            <div className='Location'>
                 <SearchBarArea></SearchBarArea>
             </div>
             <div className='Planet'>
                 <SearchBarPlanet></SearchBarPlanet>
             </div>
-            <h1>Profile</h1>
+           
         </main>
     )
 }

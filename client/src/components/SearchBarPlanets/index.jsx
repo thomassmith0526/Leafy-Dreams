@@ -19,7 +19,7 @@ const SearchBar =() => {
                 type="text"
                 value = {searchPlanet}
                 onChange={handleInputChange}
-                placeholder="Search"
+                placeholder="Search Planets"
                 />
                 <button type="submit">Search</button>
         </form>

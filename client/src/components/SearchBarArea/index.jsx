@@ -19,7 +19,7 @@ const BarSearch =() => {
                 type="text"
                 value = {searchArea}
                 onChange={handleInputChange}
-                placeholder="Search"
+                placeholder="Search Location"
                 />
                 <button type="submit">Search</button>
         </form>
