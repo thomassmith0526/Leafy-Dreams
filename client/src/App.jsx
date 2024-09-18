@@ -12,7 +12,7 @@ function App() {
   return (
     <>
     <Router>
-      <h1>Josh Is A Person</h1>
+      <h1>Josh Is A </h1>
 
         <Link to="/">
           <button>Home</button>
