@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import './login.css'
 
 
 // const loginFormHandler = async (event) => {
@@ -36,7 +38,10 @@ const Login = () => {
             <button type='submit'>Login</button>
 
             <h2>Don't have an account?</h2>
+            <Link to={'/Signup'}>
             <button type='submit'>Sign-up</button>
+            </Link>
+            
         </>
     )
 }
