@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-
+import { Link } from 'react-router-dom'
 const BarSearch =() => {
     const [searchArea, setSearchArea] = useState('');
 
@@ -19,10 +19,12 @@ const BarSearch =() => {
                 type="text"
                 value = {searchArea}
                 onChange={handleInputChange}
-                placeholder="Search"
+                placeholder="Search Location"
                 />
+                <Link to={'/area-info'}>
                 <button type="submit">Search</button>
-        </form>
+                </Link>
+            </form>
     );
 };
 

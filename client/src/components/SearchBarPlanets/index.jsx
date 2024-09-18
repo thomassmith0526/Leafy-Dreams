@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-
+import { Link } from 'react-router-dom'
 const SearchBar =() => {
     const [searchPlanet, setSearchPlanet] = useState('');
 
@@ -19,9 +19,13 @@ const SearchBar =() => {
                 type="text"
                 value = {searchPlanet}
                 onChange={handleInputChange}
-                placeholder="Search"
+                placeholder="Search Planets"
                 />
+                <Link to ={'/planet-info'}>
                 <button type="submit">Search</button>
+                </Link>
+                
+                
         </form>
     );
 };
