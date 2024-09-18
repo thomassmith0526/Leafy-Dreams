@@ -13,7 +13,7 @@ const Profile = () => {
             <div className='Planet'>
                 <SearchBarPlanet></SearchBarPlanet>
             </div>
-           
+                    
         </main>
     )
 }

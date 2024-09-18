@@ -21,7 +21,11 @@ const SearchBar =() => {
                 onChange={handleInputChange}
                 placeholder="Search Planets"
                 />
+                {/* <Link to ={'/planet-info'}> */}
                 <button type="submit">Search</button>
+                {/* </Link> */}
+                
+                
         </form>
     );
 };
