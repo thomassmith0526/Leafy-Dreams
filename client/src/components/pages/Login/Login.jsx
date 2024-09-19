@@ -1,19 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import './login.css'
 
 
-// const loginFormHandler = async (event) => {
-//     event.preventDefault();
-//     const email = document.querySelector('.email-login').value.trim()
-//     const password = document.querySelector('.password-login').value.trim();
-//     if (email && password) {
-//         const response =await fetch()
-//     }
-// }
+const loginFormHandler = async (event) => {
+    event.preventDefault();
+    const email = document.querySelector('.email-login').value.trim()
+    const password = document.querySelector('.password-login').value.trim();
+    if (email && password) {
+        const response =await fetch()
+    }
+}
 const Login = () => {
     return (
         <>
+        <h2>Login:</h2>
             <div class="mb-3">
                 <label class="form-label">Email:</label>
                 <input
@@ -35,7 +37,7 @@ const Login = () => {
                     placeholder="Enter Your Password"
                 />
             </div>
-            <button type='submit'>Login</button>
+            <button id='' type='submit'>Login</button>
 
             <h2>Don't have an account?</h2>
             <Link to={'/Signup'}>
