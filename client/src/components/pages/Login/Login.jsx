@@ -1,18 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useMutation } from '@apollo/client';
 import './login.css'
 
 
-const loginFormHandler = async (event) => {
-    event.preventDefault();
-    const email = document.querySelector('.email-login').value.trim()
-    const password = document.querySelector('.password-login').value.trim();
-    if (email && password) {
-        const response =await fetch()
-    }
-}
-const Login = () => {
+const Login = (props) => {
+    const [loginState, setLoginState] = useState({email: '', password:''});
+    const [login, { error, data }] = useMutation()
     return (
         <>
         <h2>Login:</h2>
