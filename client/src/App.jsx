@@ -1,18 +1,25 @@
 import { useState } from 'react';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import Signup from './pages/Signup/Signup';
-import Login from './pages/Login/Login';
-import Profile from './pages/Profile/Profile';
-import AreaInfo from './pages/AreaInfo/AreaInfo';
-import PlantInfo from './pages/PlantInfo/PlantInfo';
+import Home from './components/pages/Home/Home';
+import Signup from './components/pages/Signup/Signup';
+import Login from './components/pages/Login/Login';
+import Profile from './components/pages/Profile/Profile';
+import AreaInfo from './components/pages/AreaInfo/AreaInfo';
+import PlantInfo from './components/pages/PlantInfo/PlantInfo';
+
+const client = new ApolloClient({ 
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
     <>
+    <ApolloProvider client={client}>
     <Router>
-      <h1>Josh Is A Person</h1>
+      <h1>Josh Is A </h1>
 
         <Link to="/">
           <button>Home</button>
@@ -52,6 +59,7 @@ function App() {
           <Route path="/plant-info" element={<PlantInfo />} />
         </Routes>
     </Router>
+    </ApolloProvider>
     </>
   )
 }
