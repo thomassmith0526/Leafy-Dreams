@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SearchBarArea from '../../SearchBarArea';
-import SearchBarPlant from '../../SearchBarPlanets';
+import SearchBarPlant from '../../SearchBarPlants';
 
 const Profile = () => {
     return (
