@@ -8,7 +8,7 @@ import Signup from './components/pages/Signup/Signup';
 import Login from './components/pages/Login/Login';
 import Profile from './components/pages/Profile/Profile';
 import AreaInfo from './components/pages/AreaInfo/AreaInfo';
-import PlantInfo from './components/pages/PlantInfo/PlantInfo';
+import PlantInfo from './components/pages/PlantInfo/PlantInfo.jsx'
 
 const client = new ApolloClient({ 
   uri: '/graphql',
