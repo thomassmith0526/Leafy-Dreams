@@ -1,24 +1,52 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import './login.css'
 
 
 const Login = (props) => {
     const [loginState, setLoginState] = useState({email: '', password:''});
-    const [login, { error, data }] = useMutation()
+    const [login, { error, data }] = useQuery();
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setLoginState({
+            ...loginState,
+            [name]: value,
+        });
+    }
+
+    const handleLoginSubmit = async(e) =>{
+        e.preventDefault();
+        try{
+            const {data} = await login({
+                variables:{...loginState},
+            })
+        } catch (e) {
+            console.error(e);
+        }
+
+
+    }
     return (
         <>
-        <h2>Login:</h2>
-            <div class="mb-3">
+        <div>
+            {data ?(
+                <Link to="/">back to the homepage.</Link>
+            ) : (
+            <>
+            <div class="mb-3" onSubmit={handleLoginSubmit}>
                 <label class="form-label">Email:</label>
                 <input
                     type="text"
                     class=""
                     name="email"
-                    id="email-login"
                     placeholder="Enter Your Email"
+                    id="email-login"
+                    value={loginState.password}
+                    onChange={handleChange}
+
                 />
             </div>
             
@@ -28,8 +56,10 @@ const Login = (props) => {
                     type="password"
                     class=""
                     name="password"
-                    id="password-login"
                     placeholder="Enter Your Password"
+                    id="password-login"
+                    value={loginState.password}
+                    onChange={handleChange}
                 />
             </div>
             <button id='' type='submit'>Login</button>
@@ -38,9 +68,18 @@ const Login = (props) => {
             <Link to={'/Signup'}>
             <button type='submit'>Sign-up</button>
             </Link>
+            </>
+            )}
+
+            {error && (
+                <div className="my-3 p-3 bg-danger text-white">
+                {error.message}
+                </div>
+            )}
+        </div>
             
         </>
-    )
-}
+    );
+};
 
 export default Login;

@@ -28,6 +28,7 @@ const resolvers = {
             
     Mutation: {
         hello: () => 'Hello FRIENDS!!!!',
+        
         // findPlant: async (_, { state, name }) => {
         //     const newPlant = new Plant({ state, name });
         //     return await newPlant.save();
