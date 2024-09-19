@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import Signup from './pages/Signup/Signup';
-import Login from './pages/Login/Login';
-import Profile from './pages/Profile/Profile';
-import AreaInfo from './pages/AreaInfo/AreaInfo';
-import PlantInfo from './pages/PlantInfo/PlantInfo';
+import Home from './components/pages/Home/Home';
+import Signup from './components/pages/Signup/Signup';
+import Login from './components/pages/Login/Login';
+import Profile from './components/pages/Profile/Profile';
+import AreaInfo from './components/pages/AreaInfo/AreaInfo';
+import PlantInfo from './components/pages/PlantInfo/PlantInfo';
 
 function App() {
   return (
     <>
     <Router>
-      <h1>Josh Is A Person</h1>
+      <h1>Josh Is A </h1>
 
         <Link to="/">
           <button>Home</button>
