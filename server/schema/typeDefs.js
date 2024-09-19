@@ -1,13 +1,21 @@
 const { gql } = require('graphql-tag');
 
 const typeDefs = gql`
-    type Query {
-        hello: String
-    }
+  type User {
+    _id: ID!
+    userName: String!
+    email: String!
+    password: String!
+  }
+  type Query {
+   getAllUsers: [User]
+   getUser(userId: ID!): User
 
-    type Mutation {
-        hello: String
-    }
+  }
+
+  type Mutation {
+    hello: String
+  }
 `;
 
 module.exports = typeDefs;
