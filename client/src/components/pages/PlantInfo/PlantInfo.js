@@ -27,7 +27,7 @@ const EdibleLeaf = localStorage.getItem("edible_leaf");
 // Variables for API
 // Adding both api keys's just in case we decide to pull information from both
 
-'X-RAPIDAPI-KEY':import.meta.env.VITE_TREFLEAPI_KEY
-'X-RAPIDAPI-KEY':import.meta.env.VITE_PERENUALAPI_KEY
+// 'X-RAPIDAPI-KEY':import.meta.env.VITE_TREFLEAPI_KEY
+// 'X-RAPIDAPI-KEY':import.meta.env.VITE_PERENUALAPI_KEY
 
 // Functions: Check to see what information can be pulled. 
