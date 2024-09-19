@@ -8,7 +8,7 @@ import Profile from './pages/Profile/Profile';
 import AreaInfo from './pages/AreaInfo/AreaInfo';
 import PlantInfo from './pages/PlantInfo/PlantInfo';
 
-
+import './SignupForm.css'; // Import the CSS file
 
 function App() {
   return (
@@ -57,6 +57,15 @@ function App() {
     </>
   )
 }
+
+const SignupForm = () => {
+
+  return (
+      <form className="signup-form" onSubmit={handleSubmit}>
+          {/* form inputs and button */}
+      </form>
+  );
+};
 
 
 export default App;
