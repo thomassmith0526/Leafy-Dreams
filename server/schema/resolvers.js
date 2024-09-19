@@ -1,4 +1,5 @@
-const { User, Plant, StartUp, State, Bug, Helpful, Maintenance } = require('../models');
+const User = require('../models/User');
+const { Plant, StartUp, State, Bug, Helpful, Maintenance } = require('../models');
 
 const resolvers = {
     Query: {
