@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import './App.css';
+
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Home from './components/pages/Home/Home';
 import Signup from './components/pages/Signup/Signup';
 import Login from './components/pages/Login/Login';
 import Profile from './components/pages/Profile/Profile';
 import AreaInfo from './components/pages/AreaInfo/AreaInfo';
-import PlantInfo from './components/pages/PlantInfo/PlantInfo';
+import PlantInfo from './components/pages/PlantInfo/PlantInfo.jsx'
 
 const client = new ApolloClient({ 
   uri: '/graphql',
