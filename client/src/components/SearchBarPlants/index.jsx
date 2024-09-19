@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Link } from 'react-router-dom'
 const SearchBar =() => {
-    const [searchPlanet, setSearchPlanet] = useState('');
+    const [searchPlant, setSearchPlant] = useState('');
 
     const handleInputChange = (event) => {
         setSearchPlanet(event.target.value);
@@ -10,18 +10,18 @@ const SearchBar =() => {
     const handleSearch = (event) => {
         event.preventDefault();
         //search logic
-        console.log('Searching for', searchPlanet);
+        console.log('Searching for', searchPlant);
     };
 
     return (
         <form onSubmit={ handleSearch}>
             <input
                 type="text"
-                value = {searchPlanet}
+                value = {searchPlant}
                 onChange={handleInputChange}
-                placeholder="Search Planets"
+                placeholder="Search Plants"
                 />
-                <Link to ={'/planet-info'}>
+                <Link to ={'/plant-info'}>
                 <button type="submit">Search</button>
                 </Link>
                 
