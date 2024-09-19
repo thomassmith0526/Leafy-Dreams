@@ -28,6 +28,19 @@ const resolvers = {
             
     Mutation: {
         hello: () => 'Hello FRIENDS!!!!',
+
+        addUser: async (_, { name, email }) => {
+            const newUser = new User({ name, email });
+            await newUser.save();
+            return newUser;
+          },
+          updateUser: async (_, { _id, name, email }) => {
+            return await User.findByIdAndUpdate(_id, { name, email }, { new: true });
+          },
+          deleteUser: async (_, { _id }) => {
+            await User.findByIdAndDelete(_id);
+            return 'User deleted';
+          },
         // findPlant: async (_, { state, name }) => {
         //     const newPlant = new Plant({ state, name });
         //     return await newPlant.save();
