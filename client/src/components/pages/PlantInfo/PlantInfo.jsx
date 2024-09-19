@@ -1,5 +1,6 @@
 import React from 'react';
 import '../PlantInfo/PlantInfo.css'
+// import './PlantInfo.js'
 
 const PlantInfo = () => {
     return (
