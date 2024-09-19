@@ -27,20 +27,27 @@ const resolvers = {
     },
             
     Mutation: {
-        hello: () => 'Hello FRIENDS!!!!',
+       
+        addUser: async (_, { userName, email, password }) => {
+            try {
+                if (!userName || !email || !password) {
+                    throw new Error('Please add required information.');
+            }
+                const newUser = new User({ userName, email, password });
+                const savedUser = await newUser.save();
+                return savedUser;
+          } catch(error) {
+            throw new Error('Failed to create new user.');
+          }
+        },
+        //   updateUser: async (_, { _id, name, email }) => {
+        //     return await User.findByIdAndUpdate(_id, { name, email }, { new: true });
+        //   },
+        //   deleteUser: async (_, { _id }) => {
+        //     await User.findByIdAndDelete(_id);
+        //     return 'User deleted';
+        //   },
 
-        addUser: async (_, { name, email }) => {
-            const newUser = new User({ name, email });
-            await newUser.save();
-            return newUser;
-          },
-          updateUser: async (_, { _id, name, email }) => {
-            return await User.findByIdAndUpdate(_id, { name, email }, { new: true });
-          },
-          deleteUser: async (_, { _id }) => {
-            await User.findByIdAndDelete(_id);
-            return 'User deleted';
-          },
         // findPlant: async (_, { state, name }) => {
         //     const newPlant = new Plant({ state, name });
         //     return await newPlant.save();
