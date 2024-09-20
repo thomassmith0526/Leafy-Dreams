@@ -18,7 +18,26 @@ const resolvers = {
             } catch (error) {
                 throw new Error('User not found.');
             }
-        },        
+        },
+        // getAllPlants: async () => {
+        //     try {
+        //         return await Plant.find();
+        //     } catch (error) {
+        //         throw new Error('Failed to fetch all plants.');
+        //     }
+        // },
+        // getOnePlant: async (_, { plantId }) => {
+        //     try {
+        //         const plant = await Plant.findOne({ _id: plantId });
+        //         if (!plant) {
+        //             throw new Error('Plant not found.');
+        //         }
+        //         return plant;
+        //     } catch (error) {
+        //         throw new Error('Plant not found.');
+        //     }
+        // },               
+
         // plant: async () => await Plant.find(), 
         // startUp: async () => await StartUp.find(),
         // state: async () => await State.find(),
@@ -40,13 +59,22 @@ const resolvers = {
             throw new Error('Failed to create new user.');
           }
         },
-        //   updateUser: async (_, { _id, name, email }) => {
-        //     return await User.findByIdAndUpdate(_id, { name, email }, { new: true });
-        //   },
-        //   deleteUser: async (_, { _id }) => {
-        //     await User.findByIdAndDelete(_id);
-        //     return 'User deleted';
-        //   },
+        //   updateUser: async (_, { _id, userName, email }) => {
+        //      try {
+        //     const updatedUser = await User.findByIdAndUpdate(_id, { userName, email }, { new: true });
+        //     return updatedUser;
+        //  } catch (error) {
+        //     throw new Error('Failed to update user.');
+        //  }
+        // },
+        //   deleteUser: async (_, { userId }) => {
+        //     try {
+        //         await User.findByIdAndDelete(userId);
+        //         return 'User has been deleted!';
+        //     } catch (error) {
+        //         throw new Error('Failed to delete user.');
+        //     }
+        // },
 
         // findPlant: async (_, { state, name }) => {
         //     const newPlant = new Plant({ state, name });
@@ -55,6 +83,7 @@ const resolvers = {
         // updatePlant: async (_, { userId, state, name }) => {
         //     return await Plant.findByIdAndUpdate(userId, { state, name }, { new: true});
         // }
+      
     },
 };
 
