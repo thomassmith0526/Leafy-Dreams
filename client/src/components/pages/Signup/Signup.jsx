@@ -1,54 +1,47 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './signup.css';
 
-const SignupForm = () => {
-    const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: ''
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission (e.g., call an API or update state)
-        console.log(formData);
-    };
-
+const signupFormHandler = async (event) => {
+    event.preventDefault();
+    const email = document.querySelector('.email-login').value.trim()
+    const password = document.querySelector('.password-login').value.trim();
+    if (email && password) {
+        const response =await fetch()
+    }
+}
+const Signup = () => {
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="username"
-                placeholder="Username"
-                value={formData.username}
-                onChange={handleChange}
-                required
-            />
-            <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-            />
-            <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-            />
-            <button type="submit">Sign Up</button>
-        </form>
-    );
-};
+        <>
+        <h2>Sign-Up:</h2>
+            <div class="mb-3">
+                <label class="form-label">Email:</label>
+                <input
+                    type="text"
+                    class=""
+                    name="email"
+                    id="email-login"
+                    placeholder="Enter Your Email"
+                />
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Password:</label>
+                <input
+                    type="password"
+                    class=""
+                    name="password"
+                    id="password-login"
+                    placeholder="Enter Your Password"
+                />
+            </div>
+            <button id='' type='submit'>Signup</button>
+            
+        </>
+    )
+}
 
-export default SignupForm;
+export default Signup;
+
 
