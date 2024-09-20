@@ -1,60 +1,79 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, gql } from '@apollo/client';
 import './login.css'
 
+const LOGIN_MUTATION = gql `
+    mutation login($email: String!, $password: String!) {
+    loginUser(email:$email, password:$password) {
+        password
+        email
+        }
+    }
+`;
 
 const Login = (props) => {
     const [loginState, setLoginState] = useState({email: '', password:''});
-    const [login, { error, data }] = useQuery();
+    const [loginUser, { error, data }] = useMutation(LOGIN_MUTATION);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+    const handleChange = (event) => {
+        const { name, value } = event.target;
         setLoginState({
             ...loginState,
             [name]: value,
         });
     }
 
-    const handleLoginSubmit = async(e) =>{
-        e.preventDefault();
+    const handleLoginSubmit = async(event) =>{
+        console.log('hello')
+        event.preventDefault();
         try{
-            const {data} = await login({
-                variables:{...loginState},
+            const {data} = await loginUser({
+                variables:{email:loginState.email, password:loginState.password},
             })
+            if (data.loginUser) { // Adjust based on your mutation response
+                console.log('Login successful:', data.loginUser);
+                // Redirect to the next page
+                navigate('/Profile'); // Change to your desired route
+            }
+            //this is where we put redirect to next page
         } catch (e) {
             console.error(e);
         }
 
+        setLoginState({
+            email: '',
+            password: '',
+        });
 
     }
     return (
         <>
-        <div>
+        <form>
             {data ?(
                 <Link to="/">back to the homepage.</Link>
             ) : (
             <>
-            <div class="mb-3" onSubmit={handleLoginSubmit}>
-                <label class="form-label">Email:</label>
+            <div className="mb-3" onSubmit={handleLoginSubmit}>
+                <label className="form-label">Email:</label>
                 <input
                     type="text"
-                    class=""
+                    className=""
                     name="email"
                     placeholder="Enter Your Email"
                     id="email-login"
-                    value={loginState.password}
+                    value={loginState.email}
                     onChange={handleChange}
 
                 />
             </div>
             
-            <div class="mb-3">
-                <label class="form-label">Password:</label>
+            <div className="mb-3">
+                <label className="form-label">Password:</label>
                 <input
                     type="password"
-                    class=""
+                    className=""
                     name="password"
                     placeholder="Enter Your Password"
                     id="password-login"
@@ -62,12 +81,9 @@ const Login = (props) => {
                     onChange={handleChange}
                 />
             </div>
-            <button id='' type='submit'>Login</button>
-
-            <h2>Don't have an account?</h2>
-            <Link to={'/Signup'}>
-            <button type='submit'>Sign-up</button>
-            </Link>
+            
+            <button onClick={handleLoginSubmit} id='' type='submit'>Login</button>
+            
             </>
             )}
 
@@ -76,8 +92,11 @@ const Login = (props) => {
                 {error.message}
                 </div>
             )}
-        </div>
-            
+        </form>
+        <h2>Don't have an account?</h2>
+            <Link to={'/Signup'}>
+            <button type='submit'>Sign-up</button>
+            </Link>
         </>
     );
 };
