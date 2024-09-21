@@ -6,7 +6,10 @@ import SearchBarPlant from '../../SearchBarPlants';
 const Profile = () => {
     return (
         <main>
-            <h1>Profile</h1>
+            <div className='Name'>
+                <h1>Profile</h1>
+            </div>
+            
             <div className='Location'>
                 <SearchBarArea></SearchBarArea>
             </div>
