@@ -1,0 +1,19 @@
+.Recent {
+    background-color: teal;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px; 
+    float: left;  
+    margin-right: 20px;
+    margin-top: 52px;
+}
+
+.History {
+    background-color: #df730f;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px; 
+    float: right;  
+    margin-left: 500px;
+    margin-top: 52px;
+}
