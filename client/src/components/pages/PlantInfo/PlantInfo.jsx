@@ -1,8 +1,25 @@
-import React from 'react';
-import '../PlantInfo/PlantInfo.css'
-// import './PlantInfo.js'
+import { useState, useEffect } from 'react';
+import '../PlantInfo/PlantInfo.css';
 
 const PlantInfo = () => {
+    const [plant, setPlant] = useState([]);
+
+    useEffect(() => {
+        const fetchPlants = async () => {
+            try {
+                const res = await fetch('https://perenual.com/api/species-list?key=sk-usT966ec6aaa9765e6913');
+                const data = await res.json();
+                console.log(data);
+
+                setPlant(data);
+            }   catch (error) {
+                console.log('Error fetching data', error);
+            };
+        };
+
+        fetchPlants();
+    }, []);
+
     return (
         <>
         <div className='wrapper'>
