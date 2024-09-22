@@ -1,8 +1,34 @@
-import React from 'react';
-import '../PlantInfo/PlantInfo.css'
-// import './PlantInfo.js'
+import { useState, useEffect } from 'react';
+import '../PlantInfo/PlantInfo.css';
 
 const PlantInfo = () => {
+    const [plant, setPlant] = useState(null);
+
+    useEffect(() => {
+        const fetchPlant = async () => {
+            try {
+                const res = await fetch(`https://perenual.com/api/species-list?key=sk-yOgn66ef5c449f8306941`);
+                if (!res.ok) {
+                    throw new Error(`Didn't actually get data`);
+                }
+                const data = await res.json();
+                console.log(data);
+
+                if (data.data && data.data.length > 0) {
+                    setPlant(data.data);
+                }
+            }   catch (error) {
+                console.log('Error fetching data', error);
+            }
+        };
+
+        fetchPlant();
+    }, []);
+
+    useEffect(() => {
+        console.log(plant);
+    }, []);
+
     return (
         <>
         <div className='wrapper'>
@@ -14,6 +40,17 @@ const PlantInfo = () => {
                     </div>
                     <p className='plantname'>
                         <h2>Plant Name</h2>
+                        {plant ? (
+                            <div>
+                                {plant.map(plant => (
+                                    <p key={plant.id}>Common Name: {plant.common_name}</p>
+                                ))}
+                                
+                            </div>
+                        ) : (
+                            <p>Loading...</p>
+                        )}
+                        
                     </p>
                 </article>
 

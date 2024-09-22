@@ -19,7 +19,10 @@ const typeDefs = gql`
     email: String!
     password: String!
     ): User
+    loginUser(email: String!, password: String!): User
+
   }
+
 `;
 
 module.exports = typeDefs;

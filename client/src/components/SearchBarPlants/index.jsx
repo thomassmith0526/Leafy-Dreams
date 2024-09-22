@@ -4,7 +4,7 @@ const SearchBar =() => {
     const [searchPlant, setSearchPlant] = useState('');
 
     const handleInputChange = (event) => {
-        setSearchPlanet(event.target.value);
+        setSearchPlant(event.target.value);
     };
 
     const handleSearch = (event) => {
