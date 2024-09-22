@@ -1,51 +1,104 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useMutation, gql } from '@apollo/client';
 import './login.css'
 
-
-const loginFormHandler = async (event) => {
-    event.preventDefault();
-    const email = document.querySelector('.email-login').value.trim()
-    const password = document.querySelector('.password-login').value.trim();
-    if (email && password) {
-        const response =await fetch()
+const LOGIN_MUTATION = gql `
+    mutation login($email: String!, $password: String!) {
+    loginUser(email:$email, password:$password) {
+        password
+        email
+        }
     }
-}
-const Login = () => {
+`;
+
+const Login = (props) => {
+    const [loginState, setLoginState] = useState({email: '', password:''});
+    const [loginUser, { error, data }] = useMutation(LOGIN_MUTATION);
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setLoginState({
+            ...loginState,
+            [name]: value,
+        });
+    }
+
+    const handleLoginSubmit = async(event) =>{
+        console.log('hello')
+        event.preventDefault();
+        try{
+            const {data} = await loginUser({
+                variables:{email:loginState.email, password:loginState.password},
+            })
+            if (data.loginUser) { // Adjust based on your mutation response
+                console.log('Login successful:', data.loginUser);
+                // Redirect to the next page
+                navigate('/Profile'); // Change to your desired route
+            }
+            //this is where we put redirect to next page
+        } catch (e) {
+            console.error(e);
+        }
+
+        setLoginState({
+            email: '',
+            password: '',
+        });
+
+    }
     return (
         <>
-        <h2>Login:</h2>
-            <div class="mb-3">
-                <label class="form-label">Email:</label>
+        <form>
+            {data ?(
+                <Link to="/">back to the homepage.</Link>
+            ) : (
+            <>
+            <div className="mb-3" onSubmit={handleLoginSubmit}>
+                <label className="form-label">Email:</label>
                 <input
                     type="text"
-                    class=""
+                    className=""
                     name="email"
-                    id="email-login"
                     placeholder="Enter Your Email"
+                    id="email-login"
+                    value={loginState.email}
+                    onChange={handleChange}
+
                 />
             </div>
             
-            <div class="mb-3">
-                <label class="form-label">Password:</label>
+            <div className="mb-3">
+                <label className="form-label">Password:</label>
                 <input
                     type="password"
-                    class=""
+                    className=""
                     name="password"
-                    id="password-login"
                     placeholder="Enter Your Password"
+                    id="password-login"
+                    value={loginState.password}
+                    onChange={handleChange}
                 />
             </div>
-            <button id='' type='submit'>Login</button>
+            
+            <button onClick={handleLoginSubmit} id='' type='submit'>Login</button>
+            
+            </>
+            )}
 
-            <h2>Don't have an account?</h2>
+            {error && (
+                <div className="my-3 p-3 bg-danger text-white">
+                {error.message}
+                </div>
+            )}
+        </form>
+        <h2>Don't have an account?</h2>
             <Link to={'/Signup'}>
             <button type='submit'>Sign-up</button>
             </Link>
-            
         </>
-    )
-}
+    );
+};
 
 export default Login;

@@ -14,8 +14,15 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    hello: String
+    addUser(
+    userName: String!
+    email: String!
+    password: String!
+    ): User
+    loginUser(email: String!, password: String!): User
+
   }
+
 `;
 
 module.exports = typeDefs;
