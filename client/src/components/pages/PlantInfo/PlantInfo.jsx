@@ -1,29 +1,39 @@
 import { useState, useEffect } from 'react';
 import '../PlantInfo/PlantInfo.css';
-
+import '../Profile/Profile.jsx'
 
 const PlantInfo = () => {
-    const [plant, setPlant] = useState([]);
+    const [plant, setPlant] = useState(null);
 
     useEffect(() => {
-        const fetchPlants = async () => {
+        const fetchPlant = async () => {
             try {
-                const res = await fetch('https://perenual.com/api/species-list?key=sk-hjux66ef51ce55fd36940');
+                const res = await fetch(`https://perenual.com/api/species-list?key=sk-2V6W66ef5c906c6ba6942`);
+                if (!res.ok) {
+                    throw new Error(`Didn't actually get data`);
+                }
                 const data = await res.json();
                 console.log(data);
 
-                setPlant(data);
+                if (data.data && data.data.length > 0) {
+                    setPlant(data.data);
+                }
             }   catch (error) {
                 console.log('Error fetching data', error);
-            };
+            }
         };
 
-        fetchPlants();
+        fetchPlant();
     }, []);
 
     useEffect(() => {
         console.log(plant);
     }, []);
+
+    useEffect(() => {
+        console.log(plant);
+    }, []);
+    
 
     return (
         <>
@@ -36,8 +46,15 @@ const PlantInfo = () => {
                     </div>
                     <div className='plantname'>
                         <h2>Plant Name</h2>
-                        <div>Name: {plant[0].common_name } `${plant[0].common_name}`</div>
-                            
+                        {plant ? (
+                            <div>
+                        
+                                
+                            </div>
+                        ) : (
+                            <p>Loading...</p>
+                        )}
+                        
                     </div>
                 </article>
 

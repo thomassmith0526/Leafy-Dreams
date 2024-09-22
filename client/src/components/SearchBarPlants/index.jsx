@@ -9,7 +9,7 @@ const PlantSearch = () => {
     useEffect(() => {
         const fetchPlants = async () => {
             try {
-                const res = await fetch('https://perenual.com/api/species-list?key=sk-usT966ec6aaa9765e6913');
+                const res = await fetch('https://perenual.com/api/species-list?key=sk-2V6W66ef5c906c6ba6942');
                 const data = await res.json();
                 console.log(data);
 
@@ -31,6 +31,8 @@ const PlantSearch = () => {
         // Implement search logic here, possibly filtering the plants array
         console.log('Searching for', searchPlant);
         
+  
+
         // Set redirect to true to navigate to plant-info
         setRedirect(true);
     };
