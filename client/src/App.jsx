@@ -27,14 +27,6 @@ function App() {
             <button>Home</button>
           </Link>
 
-          <Link to="/signup">
-            <button>Sign Up</button>
-          </Link>
-
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
-
           <Link to="/profile">
             <button>Profile</button>
           </Link>
@@ -46,19 +38,26 @@ function App() {
           <Link to="/plant-info">
             <button>Plant Info</button>
           </Link>
+          <Link to="/signup">
+            <button>Sign Up</button>
+          </Link>
+
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
 
           <Routes>
             <Route path="/" element={<Home />} />
-
-            <Route path="/signup" element={<Signup />} />
-
-            <Route path="/login" element={<Login />} />
 
             <Route path="/profile" element={<Profile />} />
 
             <Route path="/area-info" element={<AreaInfo />} />
 
             <Route path="/plant-info" element={<PlantInfo />} />
+            
+            <Route path="/signup" element={<Signup />} />
+
+            <Route path="/login" element={<Login />} />
           </Routes>
         </Router>
       </ApolloProvider>

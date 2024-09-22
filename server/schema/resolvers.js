@@ -41,7 +41,7 @@ const resolvers = {
           }
         },
         loginUser: async(_,{email, password }) => {
-            console.log('hey')
+            console.log('User found successfully')
             try {
                 const user = await User.findOne({email})
                 console.log(user)
