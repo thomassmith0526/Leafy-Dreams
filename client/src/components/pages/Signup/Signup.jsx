@@ -5,16 +5,17 @@ import { useMutation, gql } from '@apollo/client';
 import './signup.css'
 
 const SIGNUP_MUTATION = gql `
-    mutation signup($email: String!, $password: String!) {
-    signupUser(email:$email, password:$password) {
+    mutation signup($email: String!, $password: String!, $username: String!) {
+    signupUser(email:$email, password:$password, username: $username) {
         password
         email
+        username
         }
     }
 `;
 
 const Signup = (props) => {
-    const [signupState, setSignupState] = useState({email: '', password:''});
+    const [signupState, setSignupState] = useState({email: '', password:'', username: ''});
     const [signupUser, { error, data }] = useMutation(SIGNUP_MUTATION);
 
     const handleChange = (event) => {
@@ -30,7 +31,7 @@ const Signup = (props) => {
         event.preventDefault();
         try{
             const {data} = await signupUser({
-                variables:{email:signupState.email, password:signupState.password},
+                variables:{email:signupState.email, password:signupState.password, username: signupState.username},
             })
             if (data.signupUser) { // Adjust based on your mutation response
                 console.log('Signup successful:', data.signupUser);
@@ -45,6 +46,7 @@ const Signup = (props) => {
         setSignupState({
             email: '',
             password: '',
+            username: '',
         });
 
     }
@@ -55,6 +57,17 @@ const Signup = (props) => {
                 <Link to="/">back to the profile.</Link>
             ) : (
             <>
+             <div className="mb-3">
+                            <label className="form-label">Username:</label>
+                            <input
+                                type="text"
+                                name="username"
+                                placeholder="Enter Your Username"
+                                value={signupState.username}
+                                onChange={handleChange}
+                            />
+                        </div>
+
             <div className="mb-3" onSubmit={handleSignupSubmit}>
                 <label className="form-label">Email:</label>
                 <input
