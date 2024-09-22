@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
-import './login.css'
+import '../Signup/Signup.css'
 
 const LOGIN_MUTATION = gql `
     mutation login($email: String!, $password: String!) {
@@ -52,7 +52,7 @@ const Login = (props) => {
         <>
         <form>
             {data ?(
-                <Link to="/">back to the homepage.</Link>
+                <Link to="/"></Link>
             ) : (
             <>
             <div className="mb-3" onSubmit={handleLoginSubmit}>

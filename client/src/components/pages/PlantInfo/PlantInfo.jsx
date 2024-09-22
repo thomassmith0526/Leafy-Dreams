@@ -1,22 +1,29 @@
+import { useSearchParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import '../PlantInfo/PlantInfo.css';
-
+import '../Profile/Profile.jsx'
+import searchPlant from '../../SearchBarPlants/index.jsx'
 const PlantInfo = () => {
+    const [searchParams]= useSearchParams();
+    const searchPlant = searchParams.get('search')
     const [plant, setPlant] = useState(null);
-
+const [urlimg, setUrlimg] =useState()
     useEffect(() => {
         const fetchPlant = async () => {
             try {
-                const res = await fetch(`https://perenual.com/api/species-list?key=sk-yOgn66ef5c449f8306941`);
+                const res = await fetch(`https://perenual.com/api/species-list?key=sk-hjux66ef51ce55fd36940&q=${searchPlant}`);
                 if (!res.ok) {
                     throw new Error(`Didn't actually get data`);
                 }
                 const data = await res.json();
                 console.log(data);
-
+                 
                 if (data.data && data.data.length > 0) {
-                    setPlant(data.data);
-                }
+                    setPlant(data.data[0]);
+                    
+                    //needs a for loop
+                }  
+                setUrlimg(plant.default_image.small_url) 
             }   catch (error) {
                 console.log('Error fetching data', error);
             }
@@ -29,6 +36,11 @@ const PlantInfo = () => {
         console.log(plant);
     }, []);
 
+    useEffect(() => {
+        console.log(plant);
+    }, []);
+console.log(plant)
+  
     return (
         <>
         <div className='wrapper'>
@@ -36,26 +48,27 @@ const PlantInfo = () => {
                 <h1>The Plant 411</h1></header>
 
                 <article className='main'>
-                    <div className='plantimage'>Image of plant goes in this div.  
-                    </div>
-                    <p className='plantname'>
-                        <h2>Plant Name</h2>
-                        {plant ? (
+                    <div className='plantimage'>
+                          {plant ? (
                             <div>
-                                {plant.map(plant => (
-                                    <p key={plant.id}>Common Name: {plant.common_name}</p>
-                                ))}
-                                
+                              {urlimg ?(
+                                <img src={urlimg} alt='plant picture'></img>    
+                              ) : (<p>Loading</p>)} 
+                              
                             </div>
                         ) : (
                             <p>Loading...</p>
-                        )}
-                        
-                    </p>
+                        )}    
+                    </div>
+                    <div className='plantname'>
+                        <h2>Plant Name</h2>
+                      
+                        {searchPlant && <p> {searchPlant}</p>}
+                    </div>
                 </article>
 
                 <article className='secondary'>
-                    <div id='plantcare'>information regarding sun exposure, types of fertilizer needed, soil type and watering in this div</div>
+                    <div id='plantcare'>The watering level is {plant.watering} </div>
                 </article>
 
                 <article className='third'>
