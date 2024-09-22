@@ -1,14 +1,17 @@
+import { useSearchParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import '../PlantInfo/PlantInfo.css';
 import '../Profile/Profile.jsx'
-
+import searchPlant from '../../SearchBarPlants/index.jsx'
 const PlantInfo = () => {
+    const [searchParams]= useSearchParams();
+    const searchPlant = searchParams.get('search')
     const [plant, setPlant] = useState(null);
 
     useEffect(() => {
         const fetchPlant = async () => {
             try {
-                const res = await fetch(`https://perenual.com/api/species-list?key=sk-2V6W66ef5c906c6ba6942`);
+                const res = await fetch(`https://perenual.com/api/species-list?key=sk-hjux66ef51ce55fd36940&q=${searchPlant}`);
                 if (!res.ok) {
                     throw new Error(`Didn't actually get data`);
                 }
@@ -16,7 +19,13 @@ const PlantInfo = () => {
                 console.log(data);
 
                 if (data.data && data.data.length > 0) {
-                    setPlant(data.data);
+                    setPlant(data.data[0]);
+                    // if (data.data && data.data.length > 0) {
+                    //     for (let i = 0; i < data.data.length; i++) {
+                    //         setPlant(data.data[i]);
+                        // }
+                    // }
+                    //needs a for loop
                 }
             }   catch (error) {
                 console.log('Error fetching data', error);
@@ -33,7 +42,7 @@ const PlantInfo = () => {
     useEffect(() => {
         console.log(plant);
     }, []);
-    
+console.log(plant)
 
     return (
         <>
@@ -42,24 +51,31 @@ const PlantInfo = () => {
                 <h1>The Plant 411</h1></header>
 
                 <article className='main'>
-                    <div className='plantimage'>Image of plant goes in this div.  
-                    </div>
-                    <div className='plantname'>
-                        <h2>Plant Name</h2>
-                        {plant ? (
+                    <div className='plantimage'>
+                          {plant ? (
                             <div>
-                        
-                                
+                                {plant.default_image.medium_url}
+                                {/* {plant.scientific_name} */}
                             </div>
                         ) : (
                             <p>Loading...</p>
-                        )}
-                        
+                        )}    
+                    </div>
+                    <div className='plantname'>
+                        <h2>Plant Name</h2>
+                        {searchPlant && <p> {searchPlant}</p>}
                     </div>
                 </article>
 
                 <article className='secondary'>
-                    <div id='plantcare'>information regarding sun exposure, types of fertilizer needed, soil type and watering in this div</div>
+                    <div id='plantcare'>      
+                         {plant ? (
+                            <div>
+                               watering levels are {plant.watering}
+                            </div>
+                        ) : (
+                            <p>Loading...</p>
+                        )}</div>
                 </article>
 
                 <article className='third'>

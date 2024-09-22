@@ -1,7 +1,8 @@
 import React from 'react';
+// import React from 'react-router-dom';
 import '../Profile/Profile.css'
 import SearchBarArea from '../../SearchBarArea/index';
-import SearchBarPlant from '../../SearchBarPlants';
+import SearchBarPlant from '../../SearchBarPlants/index';
 import searchPlant from '../../SearchBarPlants/index'
 const Profile = () => {
     return (
@@ -20,10 +21,10 @@ const Profile = () => {
                 <div className='Recent'>
                     <h2>Recent Searches</h2>
                     <ul>
-                        <li>{searchPlant}</li>
+                        {/* <li>{searchPlant}</li>
                         <li>rose</li>
                         <li>rose</li>
-                        <li>rose</li>
+                        <li>rose</li> */}
                     </ul>
                 </div>
             
