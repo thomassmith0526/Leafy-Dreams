@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import '../PlantInfo/PlantInfo.css';
 
+
 const PlantInfo = () => {
     const [plant, setPlant] = useState([]);
 
     useEffect(() => {
         const fetchPlants = async () => {
             try {
-                const res = await fetch('https://perenual.com/api/species-list?key=sk-usT966ec6aaa9765e6913');
+                const res = await fetch('https://perenual.com/api/species-list?key=sk-hjux66ef51ce55fd36940');
                 const data = await res.json();
                 console.log(data);
 
@@ -20,6 +21,10 @@ const PlantInfo = () => {
         fetchPlants();
     }, []);
 
+    useEffect(() => {
+        console.log(plant);
+    }, [plant]);
+
     return (
         <>
         <div className='wrapper'>
@@ -29,9 +34,11 @@ const PlantInfo = () => {
                 <article className='main'>
                     <div className='plantimage'>Image of plant goes in this div.  
                     </div>
-                    <p className='plantname'>
+                    <div className='plantname'>
                         <h2>Plant Name</h2>
-                    </p>
+                        <div>Name: {plant[0].common_name } `${plant[0].common_name}`</div>
+                            
+                    </div>
                 </article>
 
                 <article className='secondary'>
