@@ -99,10 +99,10 @@ body {
 }
 
 .plantimage {
-    padding: 20px;
+    padding: 15px;
 }
 
 .plantname h2 {
-    padding-top: 10px;
+    padding-top: 0px;
     color: rgb(57, 218, 25);
 }

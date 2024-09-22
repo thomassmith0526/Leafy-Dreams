@@ -7,7 +7,7 @@ const PlantInfo = () => {
     const [searchParams]= useSearchParams();
     const searchPlant = searchParams.get('search')
     const [plant, setPlant] = useState(null);
-
+const [urlimg, setUrlimg] =useState()
     useEffect(() => {
         const fetchPlant = async () => {
             try {
@@ -17,16 +17,13 @@ const PlantInfo = () => {
                 }
                 const data = await res.json();
                 console.log(data);
-
+                 
                 if (data.data && data.data.length > 0) {
                     setPlant(data.data[0]);
-                    // if (data.data && data.data.length > 0) {
-                    //     for (let i = 0; i < data.data.length; i++) {
-                    //         setPlant(data.data[i]);
-                        // }
-                    // }
+                    
                     //needs a for loop
-                }
+                }  
+                setUrlimg(plant.default_image.small_url) 
             }   catch (error) {
                 console.log('Error fetching data', error);
             }
@@ -43,7 +40,7 @@ const PlantInfo = () => {
         console.log(plant);
     }, []);
 console.log(plant)
-
+  
     return (
         <>
         <div className='wrapper'>
@@ -54,8 +51,10 @@ console.log(plant)
                     <div className='plantimage'>
                           {plant ? (
                             <div>
-                                {plant.default_image.medium_url}
-                                {/* {plant.scientific_name} */}
+                              {urlimg ?(
+                                <img src={urlimg} alt='plant picture'></img>    
+                              ) : (<p>Loading</p>)} 
+                              
                             </div>
                         ) : (
                             <p>Loading...</p>
@@ -63,19 +62,13 @@ console.log(plant)
                     </div>
                     <div className='plantname'>
                         <h2>Plant Name</h2>
+                      
                         {searchPlant && <p> {searchPlant}</p>}
                     </div>
                 </article>
 
                 <article className='secondary'>
-                    <div id='plantcare'>      
-                         {plant ? (
-                            <div>
-                               watering levels are {plant.watering}
-                            </div>
-                        ) : (
-                            <p>Loading...</p>
-                        )}</div>
+                    <div id='plantcare'>The watering level is {plant.watering} </div>
                 </article>
 
                 <article className='third'>
