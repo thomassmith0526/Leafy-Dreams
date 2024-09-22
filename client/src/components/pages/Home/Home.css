@@ -1,0 +1,23 @@
+.homeBody {
+    background-color: rgba(0, 128, 0, 0.186);
+    min-height: 90vh;
+    width: 100vw;
+    overflow-x: hidden;
+    /* margin-left: 5%;
+    margin-right: 5%; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.carousel {
+    height: 50vh;
+    width: 100vw;
+}
+
+.carousel-item img {
+    height: 50vh;
+    width: 90vw;
+    object-fit: cover;
+    border-bottom: solid black 3px;
+}

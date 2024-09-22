@@ -20,6 +20,7 @@ function App() {
     <>
       <ApolloProvider client={client}>
         <Router>
+          <div className='header'>
           <div className='Company'>
             <h1>Leafy Dreams </h1>
           </div>
@@ -45,6 +46,7 @@ function App() {
           <Link to="/login">
             <button>Login</button>
           </Link>
+          </div>
 
           <Routes>
             <Route path="/" element={<Home />} />
