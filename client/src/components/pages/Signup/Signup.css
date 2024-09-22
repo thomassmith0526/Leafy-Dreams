@@ -1,19 +1,22 @@
 /* SignupForm.css */
-.signup-form {
+
+.signup {
     display: flex;
     flex-direction: column;
     max-width: 400px;
     margin: auto;
 }
+.signup input {
 
-.signup-form input {
     margin: 10px 0;
     padding: 10px;
     border: 1px solid #755c36;
     border-radius: 4px;
 }
 
-.signup-form button {
+
+.signup button {
+
     padding: 10px;
     background-color: #0c3816;
     color: white;
@@ -24,4 +27,4 @@
 
 .signup-form button:hover {
     background-color: #0a2911;
-}
+
