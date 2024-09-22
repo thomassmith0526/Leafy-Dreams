@@ -23,7 +23,7 @@ const PlantInfo = () => {
 
     useEffect(() => {
         console.log(plant);
-    }, [plant]);
+    }, []);
 
     return (
         <>
