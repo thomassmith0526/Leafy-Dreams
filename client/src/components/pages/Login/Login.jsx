@@ -1,21 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useMutation, gql } from '@apollo/client';
+import { React, useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
 import '../Signup/Signup.css'
 
-const LOGIN_MUTATION = gql `
-    mutation login($email: String!, $password: String!) {
-    loginUser(email:$email, password:$password) {
-        password
-        email
-        }
+const GET_SINGLE_USER = gql `
+    query GetUser($email: String!) {
+    getUser(email: $email) {
+    _id
+    userName
+    email
+    password
+    plants {
+      _id
+      name
     }
+  }
+}
 `;
 
-const Login = (props) => {
+const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password:''});
-    const [loginUser, { error, data }] = useMutation(LOGIN_MUTATION);
 
     const handleChange = (event) => {
         const { name, value } = event.target;

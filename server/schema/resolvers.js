@@ -11,10 +11,20 @@ const resolvers = {
                 throw new Error('Failed to fetch all users.');
             }
         },
-        getUser: async (parent, { userId }) => {
+        getUser: async (parent, { email }) => {
             try {
-                const user = await User.findOne({ _id: userId });
-                return user;
+                const user = await User.findOne({ email }).populate('plant');
+                console.log(user);
+                return {
+                    _id: user._id,
+                    userName: user.userName,
+                    email: user.email,
+                    password: user.password,
+                    plants: user.plant.map(plant => ({
+                        _id: plant._id,
+                        name: plant.name
+                    }))
+                };
             } catch (error) {
                 throw new Error('User not found.');
             }
