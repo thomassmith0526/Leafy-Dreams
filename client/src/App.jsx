@@ -47,6 +47,7 @@ function App() {
             <button>Login</button>
           </Link>
           </div>
+          
 
           <Routes>
             <Route path="/" element={<Home />} />
@@ -61,6 +62,7 @@ function App() {
 
             <Route path="/login" element={<Login />} />
           </Routes>
+          <div className='footer'></div>
         </Router>
       </ApolloProvider>
     </>

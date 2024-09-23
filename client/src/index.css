@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: solid black 3px;
+      height: 10vh;
+      width: 100vw;
+    }
+
+    .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: solid black 3px;
+        height: 10vh;
+        width: 100vw;
+        position: relative;
+        margin-top: auto;
+      }
+    

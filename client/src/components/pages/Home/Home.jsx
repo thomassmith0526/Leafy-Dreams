@@ -31,6 +31,12 @@ const Home = () => {
                         <span className="sr-only">Next</span>
                     </a>
             </div>
+            <div className='about-us'></div>
+
+            <div className='zone-info'></div>
+
+            <div className='about-us'></div>
+
 
           
         </div>
