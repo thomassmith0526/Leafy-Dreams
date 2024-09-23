@@ -6,17 +6,17 @@ import { useMutation, gql } from '@apollo/client';
 import './signup.css'
 
 const SIGNUP_MUTATION = gql `
-    mutation signup($email: String!, $password: String!, $username: String!) {
-    signupUser(email:$email, password:$password, username: $username) {
-        password
-        email
-        username
-        }
-    }
+    mutation SignupUser($userName: String!, $email: String!, $password: String!) {
+    signupUser(userName: $userName, email: $email, password: $password) {
+    userName
+    email
+    password
+  }
+}
 `;
 
 const Signup = () => {
-    const [signupState, setSignupState] = useState({email: '', password:'', username: ''});
+    const [signupState, setSignupState] = useState({email: '', password:'', userName: ''});
     const [signupUser, { error, data }] = useMutation(SIGNUP_MUTATION);
     const navigate = useNavigate()
 
@@ -49,7 +49,7 @@ const Signup = () => {
         setSignupState({
             email: '',
             password: '',
-            username: '',
+            userName: '',
         });
 
     }
@@ -64,9 +64,9 @@ const Signup = () => {
                             <label className="form-label">Username:</label>
                             <input
                                 type="text"
-                                name="username"
+                                name="userName"
                                 placeholder="Enter Your Username"
-                                value={signupState.username}
+                                value={signupState.userName}
                                 onChange={handleChange}
                             />
                         </div>

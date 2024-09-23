@@ -3,9 +3,9 @@ const User = require('./models/User');
 const Plant = require('./models/Plant');
 
 const users = [
-    { username: 'Josh_Stringer', email: 'joshstringer@live.com', password: '123', plant: [] },
-    { username: 'Mariah_Young', email: 'mariah@yahoo.com', password: '456', plant: [] },
-    { username: 'Alice_Young', email: 'alicehatesemail@google.com', password: '789', plant: [] }
+    { userName: 'Josh_Stringer', email: 'joshstringer@live.com', password: '12345678', plant: [] },
+    { userName: 'Mariah_Young', email: 'mariah@yahoo.com', password: '456789', plant: [] },
+    { userName: 'Alice_Young', email: 'alicehatesemail@google.com', password: '789012', plant: [] }
 ];
 
 const plants = [
