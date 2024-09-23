@@ -6,7 +6,14 @@ const typeDefs = gql`
     userName: String!
     email: String!
     password: String!
+    plants: [Plant]
   }
+  
+  type Plant {
+  _id: ID
+  name: String!
+  }
+  
   type Query {
    getAllUsers: [User]
    getUser(userId: ID!): User

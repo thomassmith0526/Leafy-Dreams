@@ -22,16 +22,17 @@
     border-bottom: solid black 3px;
 }
 
-.about-us {
-background-color: rgb(213, 168, 112);
-width: 90vw;
-height: 10vh;
-margin-top: 1%;
-}
-
 .zone-info {
-background-color: rgb(202, 113, 113);
+background-color: #B5C188 ;
 width: 90vw;
 height: 20vh;
 margin-top: 1%;
+}
+
+.about-us {
+background-color: #DEAC80;
+width: 90vw;
+height: 10vh;
+margin-top: 1%;
+margin-bottom: 1%;
 }
