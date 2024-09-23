@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
-const PlantSearch = () => {
+const PlantSearch = ({data}) => {
     const [searchPlant, setSearchPlant] = useState('');
     const [plants, setPlants] = useState([]);
     const [redirect, setRedirect] = useState(false); // State to handle redirection
 
+    console.log("is this passed down", data)
     // useEffect(() => {
     //     const fetchPlants = async () => {
     //         try {
@@ -27,7 +28,7 @@ const PlantSearch = () => {
     };
 
     const handleSearch = (event) => {
-        event.preventDefault();
+        event.preventDefault(); 
         console.log('Searching for', searchPlant);
         setRedirect(true);
     };

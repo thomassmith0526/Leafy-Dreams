@@ -54,7 +54,7 @@ h1 {
 /* Subtitle styles */
 h2 {
     font-size: 1.75rem;
-    color: #020202;
+    color: #b10c0c;
     margin-bottom: 10px;
 }
 
@@ -66,7 +66,7 @@ h3 {
 /* Loading state */
 p {
     font-size: 1rem;
-    color: #914F1E;
+    color: #0e0702;
 }
 
 /* Search area styling */
@@ -79,16 +79,16 @@ p {
 }
 
 /* Recent searches */
-.Recent {
+.Results {
     padding: 15px;
     background-color: #E0E5B6;
     border-radius: 5px;
     border: 1px solid #914F1E;
 }
 
-.Recent div {
+.Results div {
     font-size: 1.2rem;
-    color: #333;
+    color: #6d0e0e;
 }
 
 /* Your Zone section */

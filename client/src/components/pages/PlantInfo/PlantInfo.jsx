@@ -23,7 +23,7 @@ const [urlimg, setUrlimg] =useState()
                     
                     //needs a for loop
                 }  
-                setUrlimg(data.data[0]?.default_image.small_url) 
+                setUrlimg(data.data[0].default_image.small_url) 
             }   catch (error) {
                 console.log('Error fetching data', error);
             }
@@ -63,7 +63,7 @@ console.log(plant)
                     <div className='plantname'>
                         <h2>Plant Name</h2>
                       
-                        {searchPlant && <p> {searchPlant}</p>}
+                        {plant?.common_name}
                     </div>
                 </article>
 
