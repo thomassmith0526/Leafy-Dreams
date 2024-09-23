@@ -19,21 +19,17 @@ const resolvers = {
                 throw new Error('User not found.');
             }
         },        
-        // plant: async () => await Plant.find(), 
-        // startUp: async () => await StartUp.find(),
-        // state: async () => await State.find(),
-        // bug: async () => await Bug.find(),
-        // helpful: async () => await Helpful.find(),
+        
     },
             
     Mutation: {
        
-        addUser: async (_, { userName, email, password }) => {
+        signupUser: async (_, { userName, email, password }) => {
             try {
                 if (!userName || !email || !password) {
                     throw new Error('Please add required information.');
             }
-                const newUser = new User({ userName, email, password });
+                const newUser = new User({ userName, email, password, plant:[] });
                 const savedUser = await newUser.save();
                 return savedUser;
           } catch(error) {
