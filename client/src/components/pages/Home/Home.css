@@ -1,6 +1,6 @@
-.homeBody {
+.homebody {
     background-color: rgba(0, 128, 0, 0.186);
-    min-height: 90vh;
+    /* min-height: 90vh; */
     width: 100vw;
     overflow-x: hidden;
     /* margin-left: 5%;
@@ -20,4 +20,18 @@
     width: 90vw;
     object-fit: cover;
     border-bottom: solid black 3px;
+}
+
+.about-us {
+background-color: rgb(213, 168, 112);
+width: 90vw;
+height: 10vh;
+margin-top: 1%;
+}
+
+.zone-info {
+background-color: rgb(202, 113, 113);
+width: 90vw;
+height: 20vh;
+margin-top: 1%;
 }

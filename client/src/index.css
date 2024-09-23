@@ -3,6 +3,12 @@
     padding: 0;
     box-sizing: border-box;
     }
+
+    #root { 
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; / Make it at least full height of the viewport */
+      }
     
     .header {
       display: flex;
