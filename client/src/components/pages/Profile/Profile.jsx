@@ -4,6 +4,7 @@ import '../Profile/Profile.css'
 import SearchBarArea from '../../SearchBarArea/index';
 import SearchBarPlant from '../../SearchBarPlants/index';
 import searchPlant from '../../SearchBarPlants/index'
+
 const Profile = () => {
     return (
         <main>
@@ -20,7 +21,7 @@ const Profile = () => {
            
                 <div className='Recent'>
                     <h2>Recent Searches</h2>
-                  
+                    {/* {plant.common_name} */}
                 </div>
             
 

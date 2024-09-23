@@ -23,7 +23,7 @@ const [urlimg, setUrlimg] =useState()
                     
                     //needs a for loop
                 }  
-                setUrlimg(plant.default_image.small_url) 
+                setUrlimg(data.data[0]?.default_image.small_url) 
             }   catch (error) {
                 console.log('Error fetching data', error);
             }
@@ -68,7 +68,7 @@ console.log(plant)
                 </article>
 
                 <article className='secondary'>
-                    <div id='plantcare'>The watering level is {plant.watering} </div>
+                    <div id='plantcare'>The watering level is {plant?.watering} </div>
                 </article>
 
                 <article className='third'>
