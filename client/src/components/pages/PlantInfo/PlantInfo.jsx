@@ -1,13 +1,17 @@
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../PlantInfo/PlantInfo.css';
-import '../Profile/Profile.jsx'
-import searchPlant from '../../SearchBarPlants/index.jsx'
+import '../Profile/Profile.jsx';
+import searchPlant from '../../SearchBarPlants/index.jsx';
+
+
 const PlantInfo = () => {
+
     const [searchParams]= useSearchParams();
     const searchPlant = searchParams.get('search')
     const [plant, setPlant] = useState(null);
-const [urlimg, setUrlimg] =useState()
+    const [urlimg, setUrlimg] =useState()
+
     useEffect(() => {
         const fetchPlant = async () => {
             try {
@@ -39,7 +43,7 @@ const [urlimg, setUrlimg] =useState()
     useEffect(() => {
         console.log(plant);
     }, []);
-console.log(plant)
+        console.log(plant);
   
     return (
         <>
@@ -84,7 +88,7 @@ console.log(plant)
                 </aside>
 
                 <footer className='footer'>
-                    <h4>Made with ❤️ by Group 1</h4>
+                    <h4>Made with 🤎 by Group 1</h4>
                     <h5>Josh, Crystal, Thomas, Miranda, Cesar, Sunny</h5>
                 </footer>
         </div>
