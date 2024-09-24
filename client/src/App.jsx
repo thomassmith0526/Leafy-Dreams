@@ -6,6 +6,8 @@ import Signup from './components/pages/Signup/Signup';
 import Login from './components/pages/Login/Login';
 import Profile from './components/pages/Profile/Profile';
 import PlantInfo from './components/pages/PlantInfo/PlantInfo.jsx';
+import { AuthContext } from './utils/AuthContext.jsx';
+import { useContext } from 'react';
 
 import Footer from './components/Footer/Footer.jsx';
 
@@ -15,6 +17,8 @@ export const client = new ApolloClient({
 });
 
 function App() {
+  const {isLoggedIn} = useContext(AuthContext); 
+
   return (
     <>
 
@@ -38,7 +42,9 @@ function App() {
           </Link>
 
           <Link to="/login">
-            <button className='navBtn'>Login</button>
+            <button className='navBtn'>
+              {!isLoggedIn ? 'Login' : 'Logout'}
+            </button>
           </Link>
 
           <Link to="/profile">
