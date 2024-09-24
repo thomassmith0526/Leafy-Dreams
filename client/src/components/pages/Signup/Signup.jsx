@@ -1,8 +1,9 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useMutation, gql } from '@apollo/client';
+import { AuthContext } from '../../../utils/AuthContext.jsx';
+import { client } from '../../../App';
 import './Signup.css';
 import redroses from '../../../assets/images/SignUp/redroses.jpg';
 import pinkmagnolias from '../../../assets/images/SignUp/pinkmagnolias.webp';
@@ -19,10 +20,26 @@ const SIGNUP_MUTATION = gql `
 }
 `;
 
+const GET_SINGLE_USER = gql `
+    query GetUser($email: String!) {
+        getUser(email: $email) {
+            _id
+            userName
+            email
+            password
+            plant {
+                _id
+                commonName
+            }
+        }
+    }
+`;
+
 const Signup = () => {
     const [signupState, setSignupState] = useState({email: '', password:'', userName: ''});
     const [signupUser, { error, data }] = useMutation(SIGNUP_MUTATION);
     const navigate = useNavigate()
+    const { login } = useContext(AuthContext);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -36,16 +53,18 @@ const Signup = () => {
         console.log('Signup Data:',  signupState)
         event.preventDefault();
         try{
-            const {data} = await signupUser({
+            const {data: signupData } = await signupUser({
                 variables:{...signupState},
             })
-            console.log('New user data:', data.signupUser)
-            if (data.signupUser) { // Adjust based on your mutation response
-                console.log('Signup successful:', data.signupUser);
-                // Redirect to the next page
-                navigate('/Profile'); // Change to your desired route
-            }
-            //this is where we put redirect to next page
+            console.log('New user data:', signupData.signupUser)
+
+            const { data: userData } = await client.query({
+                query: GET_SINGLE_USER,
+                variables: { email: signupState.email },
+            });
+
+            login(userData.getUser);
+            navigate('/profile');
         } catch (e) {
             console.error(e);
         }
@@ -55,8 +74,8 @@ const Signup = () => {
             password: '',
             userName: '',
         });
-
     }
+
     return (
         <>
         <div className='carousel'>
