@@ -1,4 +1,11 @@
 /* Container for the form */
+.signup_container {
+    margin-top: 5%;
+    margin-left: 5%;
+    width: 90%;
+    height: 600px;
+}
+
 form {
     max-width: 400px;
     margin: auto;
@@ -109,6 +116,16 @@ input[type="password"] {
     cursor: pointer;
     transition: background-color 0.3s;
 } */
+
+.btnSignup {
+    margin: 2%;
+    width: 25%;
+    position: relative;
+    left: 33%;
+    background-color: #F7DCB9;
+    color: #914F1E;
+    border: solid 2.5px #914F1E;
+}
 
 /* Button hover effect */
 button:hover {
