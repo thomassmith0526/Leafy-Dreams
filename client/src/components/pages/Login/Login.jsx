@@ -1,3 +1,7 @@
+import './Login.css';
+import firbabies from '../../../assets/images/Login/whitefir.jpg';
+import yucca from '../../../assets/images/Login/yucca.jpg';
+import ginger from '../../../assets/images/Login/ginger.webp';
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -56,12 +60,38 @@ const Login = () => {
             {!isLoggedIn ? (
                 
                 <form onSubmit={handleLoginSubmit}>
-            
+
+        <div className='carousel'>
+        <div id="carouselExample" className="carousel slide" data-bs-ride="carousel">
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                            <img src={firbabies} className="d-block w-100" alt="First slide" />
+                        </div>
+                        <div className="carousel-item">
+                            <img src={yucca} className="d-block w-100" alt="Second slide" />
+                        </div>
+                        <div className="carousel-item">
+                            <img src={ginger} className="d-block w-100" alt="Third slide" />
+                        </div>
+                    </div>
+                    <a className="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="sr-only">Previous</span>
+                    </a>
+                    <a className="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="sr-only">Next</span>
+                    </a>
+            </div>
+        </div>
+        <div className='signup_container'>
+        
+        <form onSubmit={handleLoginSubmit}
             <div className="mb-3" >
                 <label htmlFor='email' className="form-label">Email:</label>
                 <input
                     type="text"
-                    className=""
+                    className="textinput"
                     name="email"
                     placeholder="Enter Your Email"
                     id="email-login"
@@ -74,7 +104,7 @@ const Login = () => {
                 <label htmlFor= 'password' className="form-label">Password:</label>
                 <input
                     type="password"
-                    className=""
+                    className="textinput"
                     name="password"
                     placeholder="Enter Your Password"
                     id="password-login"
@@ -83,11 +113,21 @@ const Login = () => {
                 />
             </div>
 
+            <button onClick={handleLoginSubmit} className='btnLogin' type='submit'>Login</button>
+            
+            </>
+            )}
+            <button type='submit' disabled={loading}>
+                {loading ? 'Submitting...' : 'Login'}
+            </button>
+            </div>
+
             {error && (
                 <div className="my-3 p-3 bg-danger text-white">
                 {error.message}
                 </div>
             )}
+
                     <button type='submit' disabled={loading}>
                         {loading ? 'Submitting...' : 'Login'}
                     </button>
@@ -101,6 +141,15 @@ const Login = () => {
                         <button onClick={handleLogout}>Logout</button>
                     </div>                
                 )}
+
+        </form>
+        <div className='noaccountdiv'>
+        <h2 className='noaccount'>Don't have an account?</h2>
+            <Link to={'/Signup'}>
+            <button className='btnSubmit' type='submit'>Sign-up</button>
+            </Link>
+            </div>
+        </div>
         </>
             
             

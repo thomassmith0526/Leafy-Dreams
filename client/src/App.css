@@ -21,4 +21,5 @@
 .navBtn {
     background-color: #FAEDCE !important;
     color: #914F1E !important;
+    border: solid 2px #CCD5AE;
 }
