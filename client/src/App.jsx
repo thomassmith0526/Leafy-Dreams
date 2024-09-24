@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Home from './components/pages/Home/Home';
 import Signup from './components/pages/Signup/Signup';
-// import Login from './components/pages/Login/Login';
+import Login from './components/pages/Login/Login';
 import Profile from './components/pages/Profile/Profile';
 import PlantInfo from './components/pages/PlantInfo/PlantInfo.jsx';
 
@@ -37,9 +37,9 @@ function App() {
             <button className='navBtn'>Sign Up</button>
           </Link>
 
-          {/* <Link to="/login">
+          <Link to="/login">
             <button className='navBtn'>Login</button>
-          </Link> */}
+          </Link>
 
           <Link to="/profile">
             <button className='navBtn'>Profile</button>
@@ -53,7 +53,7 @@ function App() {
 
           <Route path="/signup" element={<Signup />} />
 
-          {/* <Route path="/login" element={<Login />} /> */}
+          <Route path="/login" element={<Login />} />
 
           <Route path="/profile" element={<Profile />} />
 

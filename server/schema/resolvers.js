@@ -45,26 +45,26 @@ const resolvers = {
             throw new Error('Failed to create new user.');
           }
         },
-        loginUser: async(_,{ email, password }) => {
-            console.log('User found successfully')
-            try {
-                const user = await User.findOne({email})
-                console.log(user)
-            if (!user) {
-                    throw new Error('Failed to find Email');
-                }
+        // loginUser: async(_,{ email, password }) => {
+        //     console.log('User found successfully')
+        //     try {
+        //         const user = await User.findOne({email})
+        //         console.log(user)
+        //     if (!user) {
+        //             throw new Error('Failed to find Email');
+        //         }
                 
-                const correctPass = await user.isCorrectPass(password);
-            if (!correctPass) {
-                    throw new Error('Incorrect Password');
+        //         const correctPass = await user.isCorrectPass(password);
+        //     if (!correctPass) {
+        //             throw new Error('Incorrect Password');
 
-                }
+        //         }
 
-                return {user};
-            } catch(error) {
-                throw new Error('Failed to Login')
-            }
-        },
+        //         return {user};
+        //     } catch(error) {
+        //         throw new Error('Failed to Login')
+        //     }
+        // },
         //   updateUser: async (_, { _id, name, email }) => {
         //     return await User.findByIdAndUpdate(_id, { name, email }, { new: true });
         //   },

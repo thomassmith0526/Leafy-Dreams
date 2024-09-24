@@ -1,67 +1,60 @@
-import { React, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import { SELECT_USER } from '../../../utils/Query';
+// import { useAuth } from '../../utils/useAuth';
 import '../Signup/Signup.css'
+import { AuthContext } from '../../../utils/AuthContext';
 
-const GET_SINGLE_USER = gql `
-    query GetUser($email: String!) {
-    getUser(email: $email) {
-    _id
-    userName
-    email
-    password
-    plants {
-      _id
-      name
-    }
-  }
-}
-`;
 
 const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password:''});
-    const navigate = useNavigate()
+    const { login } = useContext(AuthContext); 
+    const navigate = useNavigate();
+    const { data, loading, error} = useQuery(SELECT_USER, {
+        variables: {email:loginState.email},
+        skip: !loginState.email
+    });
     
+    console.log('Requesting user with email:', loginState.email);
+
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setLoginState({
-            ...loginState,
-            [name]: value,
+        setLoginState((oldData) => {
+            const updatedData = {
+                ...oldData,
+                [name]: value
+            };
+            return updatedData;
         });
-    }
+    };
 
-    const handleLoginSubmit = async(event) =>{
-        console.log('hello')
+    const handleLoginSubmit = async (event) => {
         event.preventDefault();
-        try{
-            const {data} = await loginUser({
-                variables:{email:loginState.email, password:loginState.password},
-            })
-            if (data.loginUser) { // Adjust based on your mutation response
-                console.log('Login successful:', data.loginUser);
-                // Redirect to the next page
-                navigate('/Profile'); // Change to your desired route
+
+        console.log('Login Form Data:', loginState);
+        try { 
+            if (data && data.getUser) {
+                    console.log('User found:', data.getUser)
+                    login(data.getUser);
+                    navigate('/Profile', { state: { userData: data.getUser }});
+
+                
+            } else {
+                alert('Email or password is incorrect.');
             }
-            //this is where we put redirect to next page
-        } catch (e) {
-            console.error(e);
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred during login. Please try again.');
         }
-
-        setLoginState({
-            email: '',
-            password: '',
-        });
-
-    }
+    };
     return (
         <>
-        <form>
-            {data ?(
-                <Link to="/"></Link>
-            ) : (
-            <>
-            <div className="mb-3" onSubmit={handleLoginSubmit}>
-                <label className="form-label">Email:</label>
+        <form onSubmit={handleLoginSubmit}>
+            
+            <div>
+            <div className="mb-3" >
+                <label htmlFor='email' className="form-label">Email:</label>
                 <input
                     type="text"
                     className=""
@@ -75,7 +68,7 @@ const Login = () => {
             </div>
             
             <div className="mb-3">
-                <label className="form-label">Password:</label>
+                <label htmlFor= 'password' className="form-label">Password:</label>
                 <input
                     type="password"
                     className=""
@@ -87,10 +80,10 @@ const Login = () => {
                 />
             </div>
             
-            <button onClick={handleLoginSubmit} id='' type='submit'>Login</button>
-            
-            </>
-            )}
+            <button type='submit' disabled={loading}>
+                {loading ? 'Submitting...' : 'Login'}
+            </button>
+            </div>
 
             {error && (
                 <div className="my-3 p-3 bg-danger text-white">
