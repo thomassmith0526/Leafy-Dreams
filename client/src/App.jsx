@@ -18,9 +18,11 @@ export const client = new ApolloClient({
 function App() {
   return (
     <>
+
     <ApolloProvider client={client}>
     <Router>
       <div className='headerNav'>
+
 
         <div className='siteTitle'>
         <img src='./src/assets/images/Concepts/Logo/LogoSVG.svg' className='logo' alt='Leaf Icon' />
@@ -49,6 +51,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
+
           <Route path="/signup" element={<Signup />} />
 
           <Route path="/login" element={<Login />} />
@@ -57,11 +60,13 @@ function App() {
 
           <Route path="/area-info" element={<AreaInfo />} />
 
+
           <Route path="/plant-info" element={<PlantInfo />} />
         </Routes>
     </Router>
     </ApolloProvider>
     <Footer />
+
     </>
   );
 };

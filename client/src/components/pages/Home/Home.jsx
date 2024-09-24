@@ -1,3 +1,4 @@
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './Home.css';
@@ -11,6 +12,7 @@ const Home = () => {
         <div className='homeBody'>
             {/* Bootstrap Carousel */}
             <div id="carouselExample" className="carousel slide" data-bs-ride="carousel">
+
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <img src={plantPic1} className="d-block w-100" alt="First slide" />

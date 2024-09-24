@@ -11,29 +11,35 @@ const resolvers = {
                 throw new Error('Failed to fetch all users.');
             }
         },
-        getUser: async (parent, { userId }) => {
+        getUser: async (parent, { email }) => {
             try {
-                const user = await User.findOne({ _id: userId });
-                return user;
+                const user = await User.findOne({ email }).populate('plant');
+                console.log(user);
+                return {
+                    _id: user._id,
+                    userName: user.userName,
+                    email: user.email,
+                    password: user.password,
+                    plants: user.plant.map(plant => ({
+                        _id: plant._id,
+                        name: plant.name
+                    }))
+                };
             } catch (error) {
                 throw new Error('User not found.');
             }
         },        
-        // plant: async () => await Plant.find(), 
-        // startUp: async () => await StartUp.find(),
-        // state: async () => await State.find(),
-        // bug: async () => await Bug.find(),
-        // helpful: async () => await Helpful.find(),
+        
     },
             
     Mutation: {
        
-        addUser: async (_, { userName, email, password }) => {
+        signupUser: async (_, { userName, email, password }) => {
             try {
                 if (!userName || !email || !password) {
                     throw new Error('Please add required information.');
             }
-                const newUser = new User({ userName, email, password });
+                const newUser = new User({ userName, email, password, plant:[] });
                 const savedUser = await newUser.save();
                 return savedUser;
           } catch(error) {
