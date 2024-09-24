@@ -1,5 +1,4 @@
-const User = require('../models/User');
-const { Plant, StartUp, State, Bug, Helpful, Maintenance } = require('../models');
+const { User, Plant }  = require('../models/index.js');
 
 const resolvers = {
     Query: {
@@ -46,7 +45,7 @@ const resolvers = {
             throw new Error('Failed to create new user.');
           }
         },
-        loginUser: async(_,{email, password }) => {
+        loginUser: async(_,{ email, password }) => {
             console.log('User found successfully')
             try {
                 const user = await User.findOne({email})

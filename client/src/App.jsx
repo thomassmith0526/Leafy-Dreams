@@ -3,9 +3,8 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Home from './components/pages/Home/Home';
 import Signup from './components/pages/Signup/Signup';
-import Login from './components/pages/Login/Login';
+// import Login from './components/pages/Login/Login';
 import Profile from './components/pages/Profile/Profile';
-import AreaInfo from './components/pages/AreaInfo/AreaInfo';
 import PlantInfo from './components/pages/PlantInfo/PlantInfo.jsx';
 
 import Footer from './components/Footer/Footer.jsx';
@@ -38,9 +37,9 @@ function App() {
             <button className='navBtn'>Sign Up</button>
           </Link>
 
-          <Link to="/login">
+          {/* <Link to="/login">
             <button className='navBtn'>Login</button>
-          </Link>
+          </Link> */}
 
           <Link to="/profile">
             <button className='navBtn'>Profile</button>
@@ -54,11 +53,11 @@ function App() {
 
           <Route path="/signup" element={<Signup />} />
 
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} /> */}
 
           <Route path="/profile" element={<Profile />} />
 
-          <Route path="/area-info" element={<AreaInfo />} />
+          
 
 
           <Route path="/plant-info" element={<PlantInfo />} />
