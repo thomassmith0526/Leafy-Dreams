@@ -1,6 +1,24 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+:root {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+.headerNav {
+    background-color: #914F1E;
+}
+
+.logo {
+    width: 115px !important;
+    height: 115px !important;
+}
+
+.headerNav h1 {
+    color: #FAEDCE !important;
+}
+
+.navBtn {
+    background-color: #FAEDCE !important;
+    color: #914F1E !important;
+}

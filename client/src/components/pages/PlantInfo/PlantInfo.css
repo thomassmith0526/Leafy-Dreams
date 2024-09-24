@@ -20,7 +20,8 @@ body {
     flex-flow: row wrap;
     font-weight: bold;
     text-align: center;
-    border: 1px solid rgb(4, 255, 58);
+    border: 1px solid #c58859;
+    /* padding-top: 25px; */
     
 }
 
@@ -30,57 +31,62 @@ body {
 }
 
 .header {
-    background-color: rgb(0, 0, 0);
-    border: 1px solid rgb(4, 255, 58);
-    color: white;
+    background-color: #ca783a;
+    border: 1px solid #FAEDCE;
+    color: #ffffff;
     text-align: center;
 }
 
-.footer {
-    background-color: black;
-    border: 1px solid rgb(4, 255, 58);
-    color: white;
-    height: 75px;
-    text-align: center;
+.header h1 {
+    color: #FAEDCE;
 }
 
 .main {
     text-align: left;
-    background-color: rgb(0, 0, 0);
-    border: 1px solid rgb(4, 255, 58);
+    background-color: #FAEDCE;
+    border: 1px solid #c58859;
     height: 500px;
     text-align: center;
 }
 
+.plantimage {
+    padding: 15px;
+}
+
+.plantname h2 {
+    padding-top: 0px;
+    color: #914F1E;
+}
+
 .secondary {
     text-align: left;
-    background-color: rgb(0, 0, 0);
-    border: 1px solid rgb(4, 255, 58);
-    color: white;
+    background-color: #FAEDCE;
+    border: 1px solid #c58859;
+    color: #914F1E;
     height: 210px;
     text-align: center;
 }
 
 .third {
     text-align: left;
-    background-color: rgb(0, 0, 0);
-    border: 1px solid rgb(4, 255, 58);
-    color: white;
+    background-color: #CCD5AE;
+    border: 1px solid #c58859;
+    color: #914F1E;
     height: 210px;
     text-align: center;
 }
 
 .aside-1 {
-    background-color: rgb(0, 0, 0);
-    border: 1px solid rgb(4, 255, 58);
-    color: white;
+    background-color: #CCD5AE;
+    border: 1px solid #c58859;
+    color: #914F1E;
     text-align: center;
 }
 
 .aside-2 {
-    background-color: rgb(0, 0, 0);
-    border: 1px solid rgb(4, 255, 58);
-    color: white;
+    background-color: #CCD5AE;
+    border: 1px solid #c58859;
+    color: #914F1E;
     text-align: center;
 }
 
@@ -98,11 +104,4 @@ body {
     .footer     { order: 6; }
 }
 
-.plantimage {
-    padding: 15px;
-}
 
-.plantname h2 {
-    padding-top: 0px;
-    color: rgb(57, 218, 25);
-}

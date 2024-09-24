@@ -1,32 +1,49 @@
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    }
-
-    #root { 
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh; / Make it at least full height of the viewport */
-      }
-    
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: solid black 3px;
-      height: 10vh;
-      width: 100vw;
-    }
-
-    .footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: solid black 3px;
-        height: 10vh;
-        width: 100vw;
-        position: relative;
-        margin-top: auto;
-      }
-    
+  }
+  
+  .headerNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid black 3px;
+    height: 10vh;
+    width: 100vw;
+  }
+  
+  .siteTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 27%;
+    margin-left: 5%;
+  }
+  
+  .siteTitle h1 {
+    color: black;
+  }
+  
+  .siteTitle img {
+    height: 50px;
+    width: 50px;
+    margin-right: 2%;
+  }
+  
+  .buttonBox {
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+    margin-right: 5%;
+  }
+  
+  .buttonBox button {
+    border-radius: 5px;
+    color: aliceblue;
+    background-color: black;
+    height: 30px;
+    width: 70px;
+    cursor: pointer;
+  }

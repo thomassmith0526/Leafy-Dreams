@@ -1,10 +1,9 @@
-.homebody {
-    background-color: rgba(0, 128, 0, 0.186);
-    /* min-height: 90vh; */
+
+.homeBody {
+    background-color: #F7DCB9;
+    min-height: 90vh;
     width: 100vw;
     overflow-x: hidden;
-    /* margin-left: 5%;
-    margin-right: 5%; */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -19,20 +18,64 @@
     height: 50vh;
     width: 90vw;
     object-fit: cover;
-    border-bottom: solid black 3px;
+    border-bottom: solid #914F1E 3px;
 }
 
-.zone-info {
-background-color: #B5C188 ;
-width: 90vw;
-height: 20vh;
-margin-top: 1%;
+.aboutUsBox {
+    display: flex;
+    align-content: space-around;
+    gap: 5%;
+    margin: 2% ;
+    text-align: center;
+    width: 90vh;
+    height: 47vh;
 }
 
-.about-us {
-background-color: #DEAC80;
-width: 90vw;
-height: 10vh;
-margin-top: 1%;
-margin-bottom: 1%;
+.column1, .column2 {
+    padding-top: 1%;
+    float: left;
+    width: 50%;
+    border: solid 1px black;
+    background-color: #CCD5AE;
 }
+ .column1 h1, .column2 h1 {
+    color: #914F1E;
+ }
+
+ .column1 h2, .column2 h2 {
+    color: #914F1E;
+ }
+
+
+ /* Leaving in the below css just in case we revert back to stacked boxes and not side by side boxes. */
+/* .aboutUsBox {
+    width: 90vw;
+    height: 20vh;
+    background-color: #CCD5AE;
+    margin-top: 2%;
+}
+
+.aboutUsBox h1, h2 {
+    padding-top: 2.5%;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: center;
+    color: #914F1E !important;
+}
+
+.plantFinderBox {
+    width: 90vw;
+    height: 30vh;
+    background-color: #CCD5AE;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.plantFinderBox h1, h2 {
+    padding-top: 2.5%;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: center;
+    color: #914F1E !important;
+} */
+
