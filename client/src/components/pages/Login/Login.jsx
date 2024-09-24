@@ -1,26 +1,18 @@
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useMutation, gql } from '@apollo/client';
-import '../Signup/Signup.css';
 import './Login.css';
 import firbabies from '../../../assets/images/Login/whitefir.jpg';
 import yucca from '../../../assets/images/Login/yucca.jpg';
 import ginger from '../../../assets/images/Login/ginger.webp';
-=======
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { SELECT_USER } from '../../../utils/Query';
-// import { useAuth } from '../../utils/useAuth';
 import '../Signup/Signup.css'
 import { AuthContext } from '../../../utils/AuthContext';
->>>>>>> 6cef46febcf8d1eca759765d0c78c4f545916d70
 
 
 const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password:''});
-    const { login } = useContext(AuthContext); 
+    const {login, logout, isLoggedIn} = useContext(AuthContext); 
     const navigate = useNavigate();
     const { data, loading, error} = useQuery(SELECT_USER, {
         variables: {email:loginState.email},
@@ -59,9 +51,16 @@ const Login = () => {
             alert('An error occurred during login. Please try again.');
         }
     };
+
+    const handleLogout = () => {
+        logout()
+    }
     return (
         <>
-<<<<<<< HEAD
+            {!isLoggedIn ? (
+                
+                <form onSubmit={handleLoginSubmit}>
+
         <div className='carousel'>
         <div id="carouselExample" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-inner">
@@ -86,20 +85,10 @@ const Login = () => {
             </div>
         </div>
         <div className='signup_container'>
-        <form>
-            {data ?(
-                <Link to="/"></Link>
-            ) : (
-            <>
-            <div className="mb-3" onSubmit={handleLoginSubmit}>
-                <label className="form-label">Email:</label>
-=======
-        <form onSubmit={handleLoginSubmit}>
-            
-            <div>
+        
+        <form onSubmit={handleLoginSubmit}
             <div className="mb-3" >
                 <label htmlFor='email' className="form-label">Email:</label>
->>>>>>> 6cef46febcf8d1eca759765d0c78c4f545916d70
                 <input
                     type="text"
                     className="textinput"
@@ -108,7 +97,6 @@ const Login = () => {
                     id="email-login"
                     value={loginState.email}
                     onChange={handleChange}
-
                 />
             </div>
             
@@ -124,24 +112,36 @@ const Login = () => {
                     onChange={handleChange}
                 />
             </div>
-            
-<<<<<<< HEAD
+
             <button onClick={handleLoginSubmit} className='btnLogin' type='submit'>Login</button>
             
             </>
             )}
-=======
             <button type='submit' disabled={loading}>
                 {loading ? 'Submitting...' : 'Login'}
             </button>
             </div>
->>>>>>> 6cef46febcf8d1eca759765d0c78c4f545916d70
 
             {error && (
                 <div className="my-3 p-3 bg-danger text-white">
                 {error.message}
                 </div>
             )}
+
+                    <button type='submit' disabled={loading}>
+                        {loading ? 'Submitting...' : 'Login'}
+                    </button>
+                    
+                </form>
+        
+                ) : (
+                    <div>
+                        <h1>You're already logged in!</h1>
+                        <h2>Would you like to logout?</h2>
+                        <button onClick={handleLogout}>Logout</button>
+                    </div>                
+                )}
+
         </form>
         <div className='noaccountdiv'>
         <h2 className='noaccount'>Don't have an account?</h2>
@@ -151,6 +151,8 @@ const Login = () => {
             </div>
         </div>
         </>
+            
+            
     );
 };
 
