@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
@@ -6,53 +7,61 @@ import './Login.css';
 import firbabies from '../../../assets/images/Login/whitefir.jpg';
 import yucca from '../../../assets/images/Login/yucca.jpg';
 import ginger from '../../../assets/images/Login/ginger.webp';
+=======
+import { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { SELECT_USER } from '../../../utils/Query';
+// import { useAuth } from '../../utils/useAuth';
+import '../Signup/Signup.css'
+import { AuthContext } from '../../../utils/AuthContext';
+>>>>>>> 6cef46febcf8d1eca759765d0c78c4f545916d70
 
-const LOGIN_MUTATION = gql `
-    mutation login($email: String!, $password: String!) {
-    loginUser(email:$email, password:$password) {
-        password
-        email
-        }
-    }
-`;
 
-const Login = (props) => {
+const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password:''});
-    const [loginUser, { error, data }] = useMutation(LOGIN_MUTATION);
+    const { login } = useContext(AuthContext); 
+    const navigate = useNavigate();
+    const { data, loading, error} = useQuery(SELECT_USER, {
+        variables: {email:loginState.email},
+        skip: !loginState.email
+    });
+    
+    console.log('Requesting user with email:', loginState.email);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setLoginState({
-            ...loginState,
-            [name]: value,
+        setLoginState((oldData) => {
+            const updatedData = {
+                ...oldData,
+                [name]: value
+            };
+            return updatedData;
         });
-    }
+    };
 
-    const handleLoginSubmit = async(event) =>{
-        console.log('hello')
+    const handleLoginSubmit = async (event) => {
         event.preventDefault();
-        try{
-            const {data} = await loginUser({
-                variables:{email:loginState.email, password:loginState.password},
-            })
-            if (data.loginUser) { // Adjust based on your mutation response
-                console.log('Login successful:', data.loginUser);
-                // Redirect to the next page
-                navigate('/Profile'); // Change to your desired route
+
+        console.log('Login Form Data:', loginState);
+        try { 
+            if (data && data.getUser) {
+                    console.log('User found:', data.getUser)
+                    login(data.getUser);
+                    navigate('/Profile', { state: { userData: data.getUser }});
+
+                
+            } else {
+                alert('Email or password is incorrect.');
             }
-            //this is where we put redirect to next page
-        } catch (e) {
-            console.error(e);
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred during login. Please try again.');
         }
-
-        setLoginState({
-            email: '',
-            password: '',
-        });
-
-    }
+    };
     return (
         <>
+<<<<<<< HEAD
         <div className='carousel'>
         <div id="carouselExample" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-inner">
@@ -84,6 +93,13 @@ const Login = (props) => {
             <>
             <div className="mb-3" onSubmit={handleLoginSubmit}>
                 <label className="form-label">Email:</label>
+=======
+        <form onSubmit={handleLoginSubmit}>
+            
+            <div>
+            <div className="mb-3" >
+                <label htmlFor='email' className="form-label">Email:</label>
+>>>>>>> 6cef46febcf8d1eca759765d0c78c4f545916d70
                 <input
                     type="text"
                     className="textinput"
@@ -97,7 +113,7 @@ const Login = (props) => {
             </div>
             
             <div className="mb-3">
-                <label className="form-label">Password:</label>
+                <label htmlFor= 'password' className="form-label">Password:</label>
                 <input
                     type="password"
                     className="textinput"
@@ -109,10 +125,17 @@ const Login = (props) => {
                 />
             </div>
             
+<<<<<<< HEAD
             <button onClick={handleLoginSubmit} className='btnLogin' type='submit'>Login</button>
             
             </>
             )}
+=======
+            <button type='submit' disabled={loading}>
+                {loading ? 'Submitting...' : 'Login'}
+            </button>
+            </div>
+>>>>>>> 6cef46febcf8d1eca759765d0c78c4f545916d70
 
             {error && (
                 <div className="my-3 p-3 bg-danger text-white">

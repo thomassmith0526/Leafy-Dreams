@@ -19,9 +19,16 @@ const userSchema = new Schema({
     required: true,
     minLength:5,
    },
-   // myPlants{
-
-   // }
+  
+   plant: [{
+      _id: {
+         type: Schema.Types.ObjectId,
+         ref: 'Plant',
+      },
+      name: {
+         type: String
+      }
+   }]
 });
 
 userSchema.pre('save', async function (next) {

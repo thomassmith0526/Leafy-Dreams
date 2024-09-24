@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+import React from 'react';
+import { useNavigate } from 'react-router-dom'
+>>>>>>> 6cef46febcf8d1eca759765d0c78c4f545916d70
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
@@ -8,18 +13,19 @@ import whitehydrangea from '../../../assets/images/SignUp/whitehydrangea.jpg';
 
 
 const SIGNUP_MUTATION = gql `
-    mutation signup($email: String!, $password: String!, $username: String!) {
-    signupUser(email:$email, password:$password, username: $username) {
-        password
-        email
-        username
-        }
-    }
+    mutation SignupUser($userName: String!, $email: String!, $password: String!) {
+    signupUser(userName: $userName, email: $email, password: $password) {
+    userName
+    email
+    password
+  }
+}
 `;
 
-const Signup = (props) => {
-    const [signupState, setSignupState] = useState({email: '', password:'', username: ''});
+const Signup = () => {
+    const [signupState, setSignupState] = useState({email: '', password:'', userName: ''});
     const [signupUser, { error, data }] = useMutation(SIGNUP_MUTATION);
+    const navigate = useNavigate()
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -30,12 +36,13 @@ const Signup = (props) => {
     }
 
     const handleSignupSubmit = async(event) =>{
-        console.log('hello')
+        console.log('Signup Data:',  signupState)
         event.preventDefault();
         try{
             const {data} = await signupUser({
-                variables:{email:signupState.email, password:signupState.password, username: signupState.username},
+                variables:{...signupState},
             })
+            console.log('New user data:', data.signupUser)
             if (data.signupUser) { // Adjust based on your mutation response
                 console.log('Signup successful:', data.signupUser);
                 // Redirect to the next page
@@ -49,7 +56,7 @@ const Signup = (props) => {
         setSignupState({
             email: '',
             password: '',
-            username: '',
+            userName: '',
         });
 
     }
@@ -88,10 +95,14 @@ const Signup = (props) => {
                             <label className="form-label">Username:</label>
                             <input
                                 type="text"
+<<<<<<< HEAD
                                 className='textinput'
                                 name="username"
+=======
+                                name="userName"
+>>>>>>> 6cef46febcf8d1eca759765d0c78c4f545916d70
                                 placeholder="Enter Your Username"
-                                value={signupState.username}
+                                value={signupState.userName}
                                 onChange={handleChange}
                             />
                         </div>

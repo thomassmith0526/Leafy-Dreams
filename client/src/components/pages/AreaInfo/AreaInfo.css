@@ -1,0 +1,17 @@
+:root {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.kite-one-regular {
+    font-family: "Kite One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+} 
+
+body {
+    font-family: "Kite One", sans-serif;
+    background-color: rgb(236, 228, 228);
+}
+

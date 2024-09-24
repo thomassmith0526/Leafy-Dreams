@@ -5,7 +5,6 @@ import Home from './components/pages/Home/Home';
 import Signup from './components/pages/Signup/Signup';
 import Login from './components/pages/Login/Login';
 import Profile from './components/pages/Profile/Profile';
-import AreaInfo from './components/pages/AreaInfo/AreaInfo';
 import PlantInfo from './components/pages/PlantInfo/PlantInfo.jsx';
 
 import Footer from './components/Footer/Footer.jsx';
@@ -18,9 +17,11 @@ export const client = new ApolloClient({
 function App() {
   return (
     <>
+
     <ApolloProvider client={client}>
     <Router>
       <div className='headerNav'>
+
 
         <div className='siteTitle'>
         <img src='./src/assets/images/Concepts/Logo/LogoSVG.svg' className='logo' alt='Leaf Icon' />
@@ -49,19 +50,22 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
+
           <Route path="/signup" element={<Signup />} />
 
           <Route path="/login" element={<Login />} />
 
           <Route path="/profile" element={<Profile />} />
 
-          <Route path="/area-info" element={<AreaInfo />} />
+          
+
 
           <Route path="/plant-info" element={<PlantInfo />} />
         </Routes>
     </Router>
     </ApolloProvider>
     <Footer />
+
     </>
   );
 };
