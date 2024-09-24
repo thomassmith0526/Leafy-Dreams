@@ -2,14 +2,13 @@ import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { SELECT_USER } from '../../../utils/Query';
-// import { useAuth } from '../../utils/useAuth';
 import '../Signup/Signup.css'
 import { AuthContext } from '../../../utils/AuthContext';
 
 
 const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password:''});
-    const { login } = useContext(AuthContext); 
+    const {login, logout, isLoggedIn} = useContext(AuthContext); 
     const navigate = useNavigate();
     const { data, loading, error} = useQuery(SELECT_USER, {
         variables: {email:loginState.email},
@@ -48,11 +47,16 @@ const Login = () => {
             alert('An error occurred during login. Please try again.');
         }
     };
+
+    const handleLogout = () => {
+        logout()
+    }
     return (
         <>
-        <form onSubmit={handleLoginSubmit}>
+            {!isLoggedIn ? (
+                
+                <form onSubmit={handleLoginSubmit}>
             
-            <div>
             <div className="mb-3" >
                 <label htmlFor='email' className="form-label">Email:</label>
                 <input
@@ -63,7 +67,6 @@ const Login = () => {
                     id="email-login"
                     value={loginState.email}
                     onChange={handleChange}
-
                 />
             </div>
             
@@ -79,23 +82,28 @@ const Login = () => {
                     onChange={handleChange}
                 />
             </div>
-            
-            <button type='submit' disabled={loading}>
-                {loading ? 'Submitting...' : 'Login'}
-            </button>
-            </div>
 
             {error && (
                 <div className="my-3 p-3 bg-danger text-white">
                 {error.message}
                 </div>
             )}
-        </form>
-        <h2>Don't have an account?</h2>
-            <Link to={'/Signup'}>
-            <button type='submit'>Sign-up</button>
-            </Link>
+                    <button type='submit' disabled={loading}>
+                        {loading ? 'Submitting...' : 'Login'}
+                    </button>
+                    
+                </form>
+        
+                ) : (
+                    <div>
+                        <h1>You're Already Logged In</h1>
+                        <h2>Would you like to logout?</h2>
+                        <button onClick={handleLogout}>Logout</button>
+                    </div>                
+                )}
         </>
+            
+            
     );
 };
 

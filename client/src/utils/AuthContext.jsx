@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect, createContext } from 'react';
+import { Navigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
 
@@ -17,8 +18,12 @@ export const AuthProvider = ({ children}) => {
     const logout = () => {
         setUser(null);
         localStorage.removeItem('user');
+        Navigate('/Login')
 
     };
+
+    const isLoggedIn = !!user || !!localStorage.getItem('user');
+
 
     useEffect(() => {
         const savedUser = localStorage.getItem('user');
@@ -27,8 +32,9 @@ export const AuthProvider = ({ children}) => {
         }
     }, []);
 
+
     return(
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, isLoggedIn }}>
             {children}
         </AuthContext.Provider>
     );
