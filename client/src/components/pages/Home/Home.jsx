@@ -35,7 +35,7 @@ const Home = () => {
                 <div className='column1'>
                     {/* about us info would go here */}
                  <h1>Who we are:</h1><br></br>
-                 <h2>Welcome to Leafy Dreams!<br></br>A place where plant lovers can find all of their plant resource needs.</h2>
+                 <h2>Welcome to Leafy Dreams!<br></br>A place where plant lovers can find all of their plant resource needs.<br></br>We can add additional text here later</h2>
 
                 </div>
                 <div className='column2'>
