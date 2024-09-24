@@ -1,8 +1,11 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
-import '../Signup/Signup.css'
+import '../Signup/Signup.css';
+import './Login.css';
+import firbabies from '../../../assets/images/Login/whitefir.jpg';
+import yucca from '../../../assets/images/Login/yucca.jpg';
+import ginger from '../../../assets/images/Login/ginger.webp';
 
 const LOGIN_MUTATION = gql `
     mutation login($email: String!, $password: String!) {
@@ -50,6 +53,30 @@ const Login = (props) => {
     }
     return (
         <>
+        <div className='carousel'>
+        <div id="carouselExample" className="carousel slide" data-bs-ride="carousel">
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                            <img src={firbabies} className="d-block w-100" alt="First slide" />
+                        </div>
+                        <div className="carousel-item">
+                            <img src={yucca} className="d-block w-100" alt="Second slide" />
+                        </div>
+                        <div className="carousel-item">
+                            <img src={ginger} className="d-block w-100" alt="Third slide" />
+                        </div>
+                    </div>
+                    <a className="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="sr-only">Previous</span>
+                    </a>
+                    <a className="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="sr-only">Next</span>
+                    </a>
+            </div>
+        </div>
+        <div className='signup_container'>
         <form>
             {data ?(
                 <Link to="/"></Link>
@@ -59,7 +86,7 @@ const Login = (props) => {
                 <label className="form-label">Email:</label>
                 <input
                     type="text"
-                    className=""
+                    className="textinput"
                     name="email"
                     placeholder="Enter Your Email"
                     id="email-login"
@@ -73,7 +100,7 @@ const Login = (props) => {
                 <label className="form-label">Password:</label>
                 <input
                     type="password"
-                    className=""
+                    className="textinput"
                     name="password"
                     placeholder="Enter Your Password"
                     id="password-login"
@@ -82,7 +109,7 @@ const Login = (props) => {
                 />
             </div>
             
-            <button onClick={handleLoginSubmit} id='' type='submit'>Login</button>
+            <button onClick={handleLoginSubmit} className='btnLogin' type='submit'>Login</button>
             
             </>
             )}
@@ -93,10 +120,13 @@ const Login = (props) => {
                 </div>
             )}
         </form>
-        <h2>Don't have an account?</h2>
+        <div className='noaccountdiv'>
+        <h2 className='noaccount'>Don't have an account?</h2>
             <Link to={'/Signup'}>
-            <button type='submit'>Sign-up</button>
+            <button className='btnSubmit' type='submit'>Sign-up</button>
             </Link>
+            </div>
+        </div>
         </>
     );
 };

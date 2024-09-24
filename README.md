@@ -1,21 +1,29 @@
-# Project-3-Leafy Dreams
+# Leafy Dreams
 
-## TABLE OF CONTENTS
+## Table of Contents
 
-1. Description
-2. Installation
-3. Usage
-4. Credits
-5. License
-6. Render Link
+- [Description](#description)<br>
+- [Links](#links)<br>
+- [Visuals](#visuals)<br>
+- [License](#license)<br>
+- [Credits](#credits)
+- [Questions](#questions)<br>
 
-## Description:
+## Description
 
-## Installation:
+## Links
 
-## Usage:
+<a href="https://github.com/thomassmith0526/Leafy-Dreams">Github Repo Link</a><br>
+<a href="">Deployed Application Link</a>
 
-## Credits:
+## Visuals
+
+## License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)<br>
+This application is covered under the MIT license
+
+## Credits
 
 - [Josh Stringer](https://github.com/Stringer-J)<br>
 - [Crystal Lisi](https://github.com/smrsun)<br>
@@ -24,9 +32,7 @@
 - [Cesar Castro](https://github.com/cj4871)<br>
 - [Sunny Finch](https://github.com/0-Sunny-0)<br>
 
-## License:
+## Questions
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)<br>
-This application is covered under the MIT license
-
-## Render Link:
+If you have any questions regarding this repo, please ooen an issue.<br>
+You can also find more of our work separately by clicking on our respective names listed above!

@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './Home.css';
-import plantPic1 from '../../../assets/images/Home/plantPic1.webp';
+import plantPic1 from '../../../assets/images/Home/plantPic1.jpeg';
 import plantPic2 from '../../../assets/images/Home/plantpic2.webp';
 import plantPic3 from '../../../assets/images/Home/plantpic3.webp';
 
