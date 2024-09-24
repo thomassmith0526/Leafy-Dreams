@@ -20,7 +20,8 @@ const GET_SINGLE_USER = gql `
 
 const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password:''});
-
+    const navigate = useNavigate()
+    
     const handleChange = (event) => {
         const { name, value } = event.target;
         setLoginState({
