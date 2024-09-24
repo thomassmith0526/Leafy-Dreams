@@ -31,17 +31,22 @@ const Home = () => {
                         <span className="sr-only">Next</span>
                     </a>
             </div>
-            <div className='aboutUsBox'>
-                 {/* about us info would go here */}
-                 <h1>About Us Info</h1>
-            </div>
-            <div className='plantFinderBox'>
-                 {/* about us info would go here */}
-                 <h1>Info about Plant Finder/link to Plant Finder</h1>
-            </div>
+            <div id='row' className='aboutUsBox'>
+                <div className='column1'>
+                    {/* about us info would go here */}
+                 <h1>Who we are:</h1><br></br>
+                 <h2>Welcome to Leafy Dreams!<br></br>A place where plant lovers can find all of their plant resource needs.</h2>
+
+                </div>
+                <div className='column2'>
+                    {/* about us info would go here */}
+                 <h1>Info about Plant Finder</h1><br></br>
+                 <h2>Here you will find...</h2>
+                </div>
+            </div> 
         </div>
         </>
-    )
-}
+    );
+};
 
 export default Home;

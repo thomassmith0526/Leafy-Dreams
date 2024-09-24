@@ -86,11 +86,6 @@ const PlantInfo = () => {
                 <aside className='aside aside-2'>
                     <div id='native'>Native area information goes in this div</div>
                 </aside>
-
-                <footer className='footer'>
-                    <h4>Made with 🤎 by Group 1</h4>
-                    <h5>Josh, Crystal, Thomas, Miranda, Cesar, Sunny</h5>
-                </footer>
         </div>
         </>
     );

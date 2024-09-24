@@ -8,6 +8,8 @@ import Profile from './components/pages/Profile/Profile';
 import AreaInfo from './components/pages/AreaInfo/AreaInfo';
 import PlantInfo from './components/pages/PlantInfo/PlantInfo.jsx';
 
+import Footer from './components/Footer/Footer.jsx';
+
 export const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),
@@ -21,28 +23,27 @@ function App() {
       <div className='headerNav'>
 
         <div className='siteTitle'>
-        <img src='./src/assets/images/App/Animal_Crossing_Leaf.svg' alt='Leaf Icon' />
+        <img src='./src/assets/images/Concepts/Logo/LogoSVG.svg' className='logo' alt='Leaf Icon' />
           <h1>Leafy Dreams</h1>
         </div>
 
         <div className='buttonBox'>
           <Link to="/">
-            <button>Home</button>
+            <button className='navBtn'>Home</button>
           </Link>
 
           <Link to="/signup">
-            <button>Sign Up</button>
+            <button className='navBtn'>Sign Up</button>
           </Link>
 
           <Link to="/login">
-            <button>Login</button>
+            <button className='navBtn'>Login</button>
           </Link>
 
           <Link to="/profile">
-            <button>Profile</button>
+            <button className='navBtn'>Profile</button>
           </Link>
         </div>
-
       </div>
 
         <Routes>
@@ -60,9 +61,10 @@ function App() {
         </Routes>
     </Router>
     </ApolloProvider>
+    <Footer />
     </>
-  )
-}
+  );
+};
 
 export default App;
 

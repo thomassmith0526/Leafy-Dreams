@@ -21,6 +21,7 @@ body {
     font-weight: bold;
     text-align: center;
     border: 1px solid #c58859;
+    /* padding-top: 25px; */
     
 }
 
@@ -38,14 +39,6 @@ body {
 
 .header h1 {
     color: #FAEDCE;
-}
-
-.footer {
-    background-color: #ca783a;
-    border: 1px solid #FAEDCE;
-    color: #FAEDCE;
-    height: 75px;
-    text-align: center;
 }
 
 .main {
