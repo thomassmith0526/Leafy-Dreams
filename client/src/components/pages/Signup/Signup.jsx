@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 import React from 'react';
 import { useNavigate } from 'react-router-dom'
->>>>>>> 6cef46febcf8d1eca759765d0c78c4f545916d70
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
@@ -95,12 +92,7 @@ const Signup = () => {
                             <label className="form-label">Username:</label>
                             <input
                                 type="text"
-<<<<<<< HEAD
-                                className='textinput'
-                                name="username"
-=======
                                 name="userName"
->>>>>>> 6cef46febcf8d1eca759765d0c78c4f545916d70
                                 placeholder="Enter Your Username"
                                 value={signupState.userName}
                                 onChange={handleChange}

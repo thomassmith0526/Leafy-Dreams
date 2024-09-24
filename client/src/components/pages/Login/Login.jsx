@@ -57,9 +57,6 @@ const Login = () => {
     }
     return (
         <>
-            {!isLoggedIn ? (
-                
-                <form onSubmit={handleLoginSubmit}>
 
         <div className='carousel'>
         <div id="carouselExample" className="carousel slide" data-bs-ride="carousel">
@@ -85,8 +82,9 @@ const Login = () => {
             </div>
         </div>
         <div className='signup_container'>
-        
-        <form onSubmit={handleLoginSubmit}
+        {!isLoggedIn ? (
+            <>
+            <form onSubmit={handleLoginSubmit}>
             <div className="mb-3" >
                 <label htmlFor='email' className="form-label">Email:</label>
                 <input
@@ -113,46 +111,31 @@ const Login = () => {
                 />
             </div>
 
-            <button onClick={handleLoginSubmit} className='btnLogin' type='submit'>Login</button>
-            
-            </>
-            )}
-            <button type='submit' disabled={loading}>
-                {loading ? 'Submitting...' : 'Login'}
-            </button>
-            </div>
-
-            {error && (
-                <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-                </div>
+                {error && (
+                    <div className="my-3 p-3 bg-danger text-white">
+                        {error.message}
+                    </div>
             )}
 
                     <button type='submit' disabled={loading}>
                         {loading ? 'Submitting...' : 'Login'}
                     </button>
-                    
                 </form>
-        
+                <h2>Don't have an account?</h2>
+                <Link to={'/Signup'}>
+                    <button type='submit'>Sign-up</button>
+                </Link>
+                </>
                 ) : (
                     <div>
                         <h1>You're already logged in!</h1>
                         <h2>Would you like to logout?</h2>
                         <button onClick={handleLogout}>Logout</button>
-                    </div>                
+                    </div>    
                 )}
 
-        </form>
-        <div className='noaccountdiv'>
-        <h2 className='noaccount'>Don't have an account?</h2>
-            <Link to={'/Signup'}>
-            <button className='btnSubmit' type='submit'>Sign-up</button>
-            </Link>
-            </div>
-        </div>
+                </div>
         </>
-            
-            
     );
 };
 
