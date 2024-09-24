@@ -3,12 +3,16 @@ import { useSearchParams } from 'react-router-dom';
 import '../Profile/Profile.css'
 import SearchBarArea from '../../SearchBarArea/index';
 import SearchBarPlant from '../../SearchBarPlants/index';
-import searchPlant from '../../SearchBarPlants/index'
+// import searchPlant from '../../SearchBarPlants/index'
+
 const Profile = () => {
+    
     const [searchParams]= useSearchParams();
     const searchPlant = searchParams.get('search')
     const [plant, setPlant] = useState(null);
 
+
+    
     useEffect(() => {
         const fetchPlant = async () => {
             try {
@@ -40,13 +44,85 @@ const Profile = () => {
         console.log(plant);
     }, []);
 
-    useEffect(() => {
-        console.log(plant);
-    }, []);
-console.log(plant)
+//     useEffect(() => {
+//         console.log(plant);
+//     }, []);
+// console.log(plant)
 
     return (
         <main>
+        <div id="content" className="container p-0">
+            <div className="profile-header">
+                <div className="profile-header-cover"></div>
+                <div className="profile-header-content">
+                    <div className="profile-header-img">
+                        <img
+                            src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                            alt="Clyde Stanley"
+                        />
+                    </div>
+                    <div className="profile-header-info">
+                        <h4 className="m-t-sm">Clyde Stanley</h4>
+                        <p className="m-b-sm">UXUI + Frontend Developer</p>
+                        <a href="#" className="btn btn-xs btn-primary mb-4">Edit Profile</a>
+                    </div>
+                </div>
+
+                <ul className="profile-header-tab nav nav-tabs">
+                    <li className="nav-item">
+                        <a
+                            href="https://www.bootdey.com/snippets/view/bs4-profile-with-timeline-posts"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="nav-link_"
+                        >
+                            POSTS
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a
+                            href="https://www.bootdey.com/snippets/view/bs4-profile-about"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="nav-link_"
+                        >
+                            ABOUT
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a
+                            href="https://www.bootdey.com/snippets/view/profile-photos"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="nav-link_"
+                        >
+                            PHOTOS
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a
+                            href="https://www.bootdey.com/snippets/view/profile-videos"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="nav-link_"
+                        >
+                            VIDEOS
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a
+                            href="https://www.bootdey.com/snippets/view/bs4-profile-friend-list"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="nav-link_ active show"
+                        >
+                            FRIENDS
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+     
             <div className='Name'>
                 <h1>Profile</h1>
             </div>
@@ -76,7 +152,7 @@ console.log(plant)
                 <h3>zone ##</h3>
             </div>
         </main>
-    )
-}
+    );
+};
 
 export default Profile;
