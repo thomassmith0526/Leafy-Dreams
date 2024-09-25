@@ -3,3 +3,8 @@
     height: 84vh;
     overflow-x: hidden;
 }
+
+#noImage {
+    width: 200px;
+    height: auto;
+}

@@ -1,54 +1,10 @@
-import {useState, useEffect, useContext} from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useContext } from 'react';
 import '../Profile/Profile.css';
 import { AuthContext } from '../../../utils/AuthContext';
-// import SearchBarArea from '../../SearchBarArea/index';
-// import SearchBarPlant from '../../SearchBarPlants/index';
+import noImage from '../../../assets/images/no-image-found.webp';
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
-    
-    const [searchParams]= useSearchParams();
-    const searchPlant = searchParams.get('search');
-    const [plant, setPlant] = useState(null);
-
-
-    
-    // useEffect(() => {
-    //     const fetchPlant = async () => {
-    //         try {
-    //             const res = await fetch(`https://perenual.com/api/species-list?key=sk-hjux66ef51ce55fd36940&q=${searchPlant}`);
-    //             if (!res.ok) {
-    //                 throw new Error(`Didn't actually get data`);
-    //             }
-    //             const data = await res.json();
-    //             console.log(data);
-
-    //             if (data.data && data.data.length > 0) {
-    //                 setPlant(data.data[0]);
-    //                 // if (data.data && data.data.length > 0) {
-    //                 //     for (let i = 0; i < data.data.length; i++) {
-    //                 //         setPlant(data.data[i]);
-    //                     // }
-    //                 // }
-    //                 //needs a for loop
-    //             }
-    //         }   catch (error) {
-    //             console.log('Error fetching data', error);
-    //         }
-    //     };
-
-    //     fetchPlant();
-    // }, []);
-
-    // useEffect(() => {
-    //     console.log(plant);
-    // }, []);
-
-//     useEffect(() => {
-//         console.log(plant);
-//     }, []);
-// console.log(plant)
 
     return (
         <main>
@@ -127,30 +83,25 @@ const Profile = () => {
             <div className='Name'>
                 <h1>Profile</h1>
             </div>
-            
-            {/* <div className='Location'>
-                <SearchBarArea></SearchBarArea>
-            </div>
-            <div className='Planet'>
-                <SearchBarPlant></SearchBarPlant>
-            </div> */}
            
                 <div className='Recent'>
                     <h2>Your Plants</h2>
                     <p>{user.plant.length > 0 ? (
                         user.plant.map((plant) => (
-                            <span key={plant._id}>{plant.commonName}<br></br></span>
+                            <div key={plant._id}>
+                            {plant.thumbNail ? (
+                            <img src={plant.thumbNail} alt='No image' />
+                        ) : <img id='noImage' src={noImage} alt='No Image' />}
+
+                                {/* <img src={plant.thumbNail} alt='No Image' /> */}
+                                <span>{plant.commonName}<br></br></span>
+                            </div>
                         ))                       
                     ) : (
                         <span>No plants added</span>
                     )}</p>
                 </div>
             
-
-            {/* <div className='History'>
-                <h2>Your Zone</h2>
-                <h3>zone ##</h3>
-            </div> */}
             </div>
 
               {/* Personal Information Section */}

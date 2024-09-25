@@ -22,7 +22,8 @@ const resolvers = {
                     password: user.password,
                     plant: user.plant.map(plant => ({
                         _id: plant._id,
-                        name: plant.name
+                        commonName: plant.commonName,
+                        thumbNail: plant.thumbNail
                     }))
                 };
             } catch (error) {
@@ -52,9 +53,10 @@ const resolvers = {
           }
         },
 
-        addPlant: async (_, { email, commonName }) => {
+        addPlant: async (_, { email, commonName, thumbNail }) => {
             console.log('Email:', email);
             console.log('Common Name:', commonName);
+            console.log('Thumbnail URL:', thumbNail);
             try {
                 const user = await User.findOne({ email });
                 console.log(user);
@@ -70,10 +72,10 @@ const resolvers = {
                     console.log('Plant already in database:', existingPlant);
                     return user;
                 }
-                const newPlant = new Plant({ commonName });
+                const newPlant = new Plant({ commonName, thumbNail });
                 await newPlant.save();
                 //maybe plant/plants is the issue
-                user.plant.push({ _id: newPlant._id, commonName });
+                user.plant.push({ _id: newPlant._id, commonName, thumbNail });
                 await user.save();
                 await user.populate('plant');
                 console.log('Plant added to user:', user);
