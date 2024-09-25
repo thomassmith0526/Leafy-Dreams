@@ -17,11 +17,13 @@ export const client = new ApolloClient({
 });
 
 function App() {
-  const {isLoggedIn} = useContext(AuthContext); 
-
+  const {isLoggedIn,logout} = useContext(AuthContext); 
+  const handleLogout = () => {
+    logout()
+    console.log('im running')
+}
   return (
     <>
-
     <ApolloProvider client={client}>
     <Router>
       <div className='headerNav'>
@@ -41,11 +43,14 @@ function App() {
             <button className='navBtn'>Sign Up</button>
           </Link>
 
-          <Link to="/login">
-            <button className='navBtn'>
-              {!isLoggedIn ? 'Login' : 'Logout'}
-            </button>
-          </Link>
+            {!isLoggedIn ? (
+              <Link to="/login">
+              <button className='navBtn'>Login</button>
+              </Link>
+            ) : ( 
+              <button onClick={handleLogout} className='navBtn'><Link to="/login" >Logout</Link></button>
+            )}
+          
 
           <Link to="/profile">
             <button className='navBtn'>Profile</button>
