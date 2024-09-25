@@ -6,6 +6,7 @@ import Signup from './components/pages/Signup/Signup';
 import Login from './components/pages/Login/Login';
 import Profile from './components/pages/Profile/Profile';
 import PlantInfo from './components/pages/PlantInfo/PlantInfo.jsx';
+import Search from './components/pages/Search/Search.jsx';
 import { AuthContext } from './utils/AuthContext.jsx';
 import { useContext } from 'react';
 
@@ -50,6 +51,10 @@ function App() {
           <Link to="/profile">
             <button className='navBtn'>Profile</button>
           </Link>
+
+          <Link to="/search">
+            <button className='navBtn'>Search Test</button>
+          </Link>
         </div>
       </div>
 
@@ -62,6 +67,8 @@ function App() {
           <Route path="/login" element={<Login />} />
 
           <Route path="/profile" element={<Profile />} />
+
+          <Route path="/search" element={<Search />} />
 
           
 

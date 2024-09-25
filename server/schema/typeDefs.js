@@ -10,19 +10,20 @@ const typeDefs = gql`
   }
   
   type Plant {
-  _id: ID
-  commonName: String!
+    _id: ID
+    commonName: String!
   }
   
   type Query {
-   getAllUsers: [User]
-   getUser(email: String!): User
-
+    getAllUsers: [User]
+    getUser(email: String!): User
+    getUserPlants(email: String!): [Plant]
   }
 
   type Mutation {
     signupUser(userName: String!, email: String!, password: String!): User
     loginUser(email: String!, password: String!): User
+    addPlant(email: String!, commonName: String!): User
   }
 
 `;
