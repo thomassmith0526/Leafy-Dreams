@@ -1,5 +1,39 @@
 .searchBody {
-    background-color: grey;
+    background-color:  rgb(248, 239, 223);
+    /* padding-left: 5%; */
     height: 84vh;
     overflow-x: hidden;
+}
+
+h1 {
+    text-align: center;
+}
+
+.searchResults {
+    padding: 10px;
+    margin-bottom: 20px;
+
+}
+
+#noImage {
+    width: 200px;
+    height: auto;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+ul img {
+    margin: 20px;
+    box-shadow: 5px 5px 20px 5px;
+}
+
+.thumbSquare {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

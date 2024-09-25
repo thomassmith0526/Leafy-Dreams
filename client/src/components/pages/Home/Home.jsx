@@ -37,18 +37,33 @@ const Home = () => {
                 <div className='column1'>
                     {/* about us info would go here */}
                  <h1>Welcome to Leafy Dreams!</h1><br></br>
-                 <h2>A place where plant lovers can find all of their plant resource needs.<br></br>We can add additional text here later</h2>
+                 <h2> At Leafy Dreams we are a team of six friends who came together to create a working tool of all known plant species. We created this tool to help identify plant life in your zone or just for your own curiosity.We believe that nature is the, most powerful piece of life. 
+                 Our mission is to make it simple for anyone to help the environment by giving the helping power to plant new plant life.So if you don't know what plant is good for your area or how to care for it, we have all the answers to help you get started to make your Leafy Dreams come true.  <br></br>
+                </h2>
 
                 </div>
                 <div className='column2'>
                     {/* about us info would go here */}
-                 <h1>Info about Plant Finder</h1><br></br>
-                 <h2>Here you will find...</h2>
+                 <h1>What to expect from Plant Finder</h1><br></br>
+                 <h2>-Common name(s) of the plant(s)<br></br><br></br>
+                     -Cycle Type  <br></br><br></br>(annual, biennial, or perennial.)<br></br><br></br>
+                     -Watering Times<br></br><br></br> 
+                     -How Frequent <br></br><br></br>
+                     -Sunlight & More
+
+</h2>
                 </div>
             </div>
             <div className='benefitsdiv'>
                 <div className='benefits'>
                     <h3>Benefits of our site:</h3>
+                    -Habitat for wildlife<br></br>
+                    -Fight climate change<br></br>
+                    -Increase property value<br></br>
+                    -Enhance air quality<br></br>
+                    -Support biodiversity<br></br>
+                    -Central erosion<br></br>
+                    -Reduce stress
                 </div>
             </div> 
         </div>

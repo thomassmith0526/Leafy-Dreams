@@ -40,10 +40,13 @@
 }
  .column1 h1, .column2 h1 {
     color: #914F1E;
+    font-size: 1.5rem;
  }
 
+ /* //paragraph content */
  .column1 h2, .column2 h2 {
     color: #914F1E;
+    font-size: 1.2rem;
  }
 
  .benefitsdiv {
@@ -62,7 +65,9 @@
     width: 100%;
     border: solid 1px #914F1E;
     background-color: #CCD5AE;
-}
+    color: #914F1E !important;
+ }
+
 
 
  /* Leaving in the below css just in case we revert back to stacked boxes and not side by side boxes. */
