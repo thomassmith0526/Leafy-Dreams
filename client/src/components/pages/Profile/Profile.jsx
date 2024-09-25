@@ -50,6 +50,11 @@ const Profile = () => {
 
     return (
         <main>
+
+            <div className='Name'>
+                <h1>Profile</h1>
+            </div>
+
         <div id="content" className="container p-0">
             <div className="profile-header">
                 <div className="profile-header-cover"></div>
@@ -62,7 +67,7 @@ const Profile = () => {
                     </div>
                     <div className="profile-header-info">
                         <h4 className="m-t-sm">Clyde Stanley</h4>
-                        <p className="m-b-sm">UXUI + Frontend Developer</p>
+                        {/* <p className="m-b-sm">UXUI + Frontend Developer</p> */}
                         <a href="#" className="btn btn-xs btn-primary mb-4">Edit Profile</a>
                     </div>
                 </div>
