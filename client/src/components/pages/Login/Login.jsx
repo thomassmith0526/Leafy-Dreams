@@ -11,7 +11,7 @@ import { AuthContext } from '../../../utils/AuthContext';
 
 const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password:''});
-    const {login, logout, isLoggedIn} = useContext(AuthContext); 
+    const {login} = useContext(AuthContext); 
     const navigate = useNavigate();
     const { data, loading, error} = useQuery(SELECT_USER, {
         variables: {email:loginState.email},
