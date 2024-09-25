@@ -6,6 +6,7 @@ import Signup from './components/pages/Signup/Signup';
 import Login from './components/pages/Login/Login';
 import Profile from './components/pages/Profile/Profile';
 import PlantInfo from './components/pages/PlantInfo/PlantInfo.jsx';
+import Search from './components/pages/Search/Search.jsx';
 import { AuthContext } from './utils/AuthContext.jsx';
 import { useContext } from 'react';
 
@@ -17,11 +18,13 @@ export const client = new ApolloClient({
 });
 
 function App() {
-  const {isLoggedIn} = useContext(AuthContext); 
-
+  const {isLoggedIn,logout} = useContext(AuthContext); 
+  const handleLogout = () => {
+    logout()
+    console.log('im running')
+}
   return (
     <>
-
     <ApolloProvider client={client}>
     <Router>
       <div className='headerNav'>
@@ -41,14 +44,21 @@ function App() {
             <button className='navBtn'>Sign Up</button>
           </Link>
 
-          <Link to="/login">
-            <button className='navBtn'>
-              {!isLoggedIn ? 'Login' : 'Logout'}
-            </button>
-          </Link>
+            {!isLoggedIn ? (
+              <Link to="/login">
+              <button className='navBtn'>Login</button>
+              </Link>
+            ) : ( 
+              <Link to="/login" ><button onClick={handleLogout} className='navBtn'>Logout</button></Link>
+            )}
+          
 
           <Link to="/profile">
             <button className='navBtn'>Profile</button>
+          </Link>
+
+          <Link to="/search">
+            <button className='navBtn'>Search Test</button>
           </Link>
         </div>
       </div>
@@ -62,6 +72,8 @@ function App() {
           <Route path="/login" element={<Login />} />
 
           <Route path="/profile" element={<Profile />} />
+
+          <Route path="/search" element={<Search />} />
 
           
 

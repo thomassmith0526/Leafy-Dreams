@@ -9,10 +9,9 @@ import { SELECT_USER } from '../../../utils/Query';
 import '../Signup/Signup.css'
 import { AuthContext } from '../../../utils/AuthContext';
 
-
 const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password:''});
-    const {login, logout, isLoggedIn} = useContext(AuthContext); 
+    const {login} = useContext(AuthContext); 
     const navigate = useNavigate();
     const { data, loading, error} = useQuery(SELECT_USER, {
         variables: {email:loginState.email},
@@ -52,12 +51,8 @@ const Login = () => {
         }
     };
 
-    const handleLogout = () => {
-        logout()
-    }
     return (
         <>
-
         <div className='carousel'>
         <div id="carouselExample" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-inner">
@@ -82,8 +77,7 @@ const Login = () => {
             </div>
         </div>
         <div className='signup_container'>
-        {!isLoggedIn ? (
-            <>
+            
             <form onSubmit={handleLoginSubmit}>
             <div className="mb-3" >
                 <label htmlFor='email' className="form-label">Email:</label>
@@ -120,6 +114,7 @@ const Login = () => {
                     <button className='btnLogin' type='submit' disabled={loading}>
                         {loading ? 'Submitting...' : 'Login'}
                     </button>
+
                 </form>
                 <div className='noaccountdiv'>
                 <h2 className='noaccount'>Don't have an account?</h2>
@@ -127,16 +122,8 @@ const Login = () => {
                     <button className='btnSubmit' type='submit'>Sign-up</button>
                 </Link>
                 </div>
-                </>
-                ) : (
-                    <div>
-                        <h1>You're already logged in!</h1>
-                        <h2>Would you like to logout?</h2>
-                        <button onClick={handleLogout}>Logout</button>
-                    </div>    
-                )}
+            </div>
 
-                </div>
         </>
     );
 };

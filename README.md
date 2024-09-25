@@ -10,6 +10,8 @@
 - [Questions](#questions)<br>
 
 ## Description
+The task was to make a responsive and easy to use application to search for indoor and outdoor plants suitable for a particular climate zone. Within this search you will receive detailed care and maintenance information to help effectively grow and maintain the plants you want and keep them thriving for years to come.
+ 
 
 ## Links
 
