@@ -40,10 +40,12 @@
 }
  .column1 h1, .column2 h1 {
     color: #914F1E;
+    font-size: 1.5rem;
  }
 
  .column1 h2, .column2 h2 {
     color: #914F1E;
+    font-size: 1.2rem;
  }
 
  .benefitsdiv {
