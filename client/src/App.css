@@ -21,8 +21,8 @@
 .buttonBox {
     display: flex;
     justify-content: space-between;
-    width: 15% !important;
-    margin-right: 5% !important;
+    width: 25%;
+    margin-right: 4% !important;
   }
 
 .navBtn {

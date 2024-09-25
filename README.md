@@ -18,6 +18,11 @@
 
 ## Visuals
 
+<img src="./client/src/assets/images/README_Images/" alt="Homepage landing" />
+<img src="./client/src/assets/images/README_Images/SignUp.png" alt="signup page">
+<img src="./client/src/assets/images/README_Images/Login.png" alt="login page">
+<img src="./client/src/assets/images/README_Images/" alt="profile page">
+
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)<br>

@@ -16,7 +16,7 @@
 
 .carousel-item img {
     height: 50vh;
-    width: 90vw;
+    width: 80vw;
     object-fit: cover;
     border-bottom: solid #914F1E 3px;
 }
