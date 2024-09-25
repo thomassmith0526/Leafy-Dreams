@@ -1,10 +1,12 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react';
 import { useSearchParams } from 'react-router-dom';
-import '../Profile/Profile.css'
+import '../Profile/Profile.css';
+import { AuthContext } from '../../../utils/AuthContext';
 // import SearchBarArea from '../../SearchBarArea/index';
 // import SearchBarPlant from '../../SearchBarPlants/index';
 
 const Profile = () => {
+    const { user } = useContext(AuthContext);
     
     const [searchParams]= useSearchParams();
     const searchPlant = searchParams.get('search');
@@ -12,36 +14,36 @@ const Profile = () => {
 
 
     
-    useEffect(() => {
-        const fetchPlant = async () => {
-            try {
-                const res = await fetch(`https://perenual.com/api/species-list?key=sk-hjux66ef51ce55fd36940&q=${searchPlant}`);
-                if (!res.ok) {
-                    throw new Error(`Didn't actually get data`);
-                }
-                const data = await res.json();
-                console.log(data);
+    // useEffect(() => {
+    //     const fetchPlant = async () => {
+    //         try {
+    //             const res = await fetch(`https://perenual.com/api/species-list?key=sk-hjux66ef51ce55fd36940&q=${searchPlant}`);
+    //             if (!res.ok) {
+    //                 throw new Error(`Didn't actually get data`);
+    //             }
+    //             const data = await res.json();
+    //             console.log(data);
 
-                if (data.data && data.data.length > 0) {
-                    setPlant(data.data[0]);
-                    // if (data.data && data.data.length > 0) {
-                    //     for (let i = 0; i < data.data.length; i++) {
-                    //         setPlant(data.data[i]);
-                        // }
-                    // }
-                    //needs a for loop
-                }
-            }   catch (error) {
-                console.log('Error fetching data', error);
-            }
-        };
+    //             if (data.data && data.data.length > 0) {
+    //                 setPlant(data.data[0]);
+    //                 // if (data.data && data.data.length > 0) {
+    //                 //     for (let i = 0; i < data.data.length; i++) {
+    //                 //         setPlant(data.data[i]);
+    //                     // }
+    //                 // }
+    //                 //needs a for loop
+    //             }
+    //         }   catch (error) {
+    //             console.log('Error fetching data', error);
+    //         }
+    //     };
 
-        fetchPlant();
-    }, []);
+    //     fetchPlant();
+    // }, []);
 
-    useEffect(() => {
-        console.log(plant);
-    }, []);
+    // useEffect(() => {
+    //     console.log(plant);
+    // }, []);
 
 //     useEffect(() => {
 //         console.log(plant);
@@ -61,7 +63,7 @@ const Profile = () => {
                         />
                     </div>
                     <div className="profile-header-info">
-                        <h4 className="m-t-sm">Clyde Stanley</h4>
+                        <h4 className="m-t-sm">{user.userName}</h4>
                         <p className="m-b-sm">UXUI + Frontend Developer</p>
                         <a href="#" className="btn btn-xs btn-primary mb-4">Edit Profile</a>
                     </div>
