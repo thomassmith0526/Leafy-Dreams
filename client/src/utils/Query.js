@@ -7,9 +7,9 @@ export const SELECT_USER = gql`
             userName
             email
             password
-            plants {
+            plant {
                 _id
-                name
+                commonName
             }
         }
     }
