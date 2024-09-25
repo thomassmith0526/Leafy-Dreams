@@ -16,6 +16,7 @@ const Search = () => {
     const [plantDetails, setPlantDetails] = useState(null);
     const [selectedPlantId, setSelectedPlantId] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
 
     const [addPlant] = useMutation(ADD_USER_PLANT_MUTATION, {
         onError: (error) => {
@@ -71,6 +72,7 @@ const Search = () => {
     const closeModal = () => {
         setIsModalOpen(false);
         setPlantDetails(null);
+        setSuccessMessage('');
     };
 
     const handleAddPlant = async () => {
@@ -81,12 +83,14 @@ const Search = () => {
             console.log(thumbNail);
             try {
                 const { data } = await addPlant({ variables: { email: user.email, commonName, thumbNail } });
+                setSuccessMessage('Plant added successfully!');
                 console.log('Mutation result:', data);
 
                 const updatedPlants = [...user.plant, { _id: data.addPlant.plant[data.addPlant.plant.length - 1]._id, commonName, thumbNail }];
                 updateUserPlants(updatedPlants);
             } catch (error) {
                 console.error('Error calling addPlant:', error);
+                setSuccessMessage('Plant previously added...');
             }
         }
     };
@@ -123,6 +127,7 @@ const Search = () => {
             </div>
 
             <SearchModal isOpen={isModalOpen} onClose={closeModal} addPlant={handleAddPlant} commonName={plantDetails?.common_name || 'N/A'}>
+                {successMessage && <p>{successMessage}</p>}
                 {plantDetails && (
                     <div className='plantDetails'>
                         {plantDetails.default_image?.thumbnail ? (
