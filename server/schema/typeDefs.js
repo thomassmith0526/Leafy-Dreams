@@ -12,6 +12,7 @@ const typeDefs = gql`
   type Plant {
     _id: ID
     commonName: String!
+    thumbNail: String
   }
   
   type Query {
@@ -23,7 +24,7 @@ const typeDefs = gql`
   type Mutation {
     signupUser(userName: String!, email: String!, password: String!): User
     loginUser(email: String!, password: String!): User
-    addPlant(email: String!, commonName: String!): User
+    addPlant(email: String!, commonName: String!, thumbNail: String): User
   }
 
 `;

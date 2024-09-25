@@ -8,17 +8,11 @@ const plantSchema = new Schema({
         type: String,
         required: true
     },
-    
+    thumbNail: {
+        type: String
+    }, 
 });
 
 const Plant = mongoose.model('Plant', plantSchema);
 
 module.exports = Plant;
-
-
-// state varchar
-// name varchar
-// startup_id BigInt
-// bug_id BigInt array
-// helpful_id BigInt
-// maintenance_id BigInt

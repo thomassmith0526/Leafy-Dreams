@@ -9,7 +9,7 @@ const SearchModal = ({ isOpen, onClose, addPlant, children }) => {
             <div className='content' onClick={(e) => e.stopPropagation()}>
                 <button className='close-button' onClick={onClose}>Close</button>
                 {children}
-                <button className='add-button' onClick={addPlant}>Add</button>
+                {addPlant && <button className='add-button' onClick={addPlant}>Add</button>}
             </div>
         </div>
     );
@@ -18,7 +18,7 @@ const SearchModal = ({ isOpen, onClose, addPlant, children }) => {
 SearchModal.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
-    addPlant: PropTypes.func.isRequired,
+    addPlant: PropTypes.func,
     children: PropTypes.node.isRequired,
 };
 

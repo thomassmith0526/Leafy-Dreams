@@ -10,6 +10,7 @@ export const SELECT_USER = gql`
             plant {
                 _id
                 commonName
+                thumbNail
             }
         }
     }

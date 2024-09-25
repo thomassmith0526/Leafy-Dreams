@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const ADD_USER_PLANT_MUTATION = gql`
-    mutation AddPlant($email: String!, $commonName: String!) {
-        addPlant(email: $email, commonName: $commonName) {
+    mutation AddPlant($email: String!, $commonName: String!, $thumbNail: String) {
+        addPlant(email: $email, commonName: $commonName, thumbNail: $thumbNail) {
              _id
             userName
             email
@@ -10,6 +10,7 @@ export const ADD_USER_PLANT_MUTATION = gql`
             plant {
                 _id
                 commonName
+                thumbNail
             }
         }
     }
