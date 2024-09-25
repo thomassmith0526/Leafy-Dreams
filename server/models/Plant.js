@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const plantSchema = new Schema({
    
-    name: {
+    commonName: {
         type: String,
         required: true
     },

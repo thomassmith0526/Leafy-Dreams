@@ -111,15 +111,28 @@ const Login = () => {
                     </div>
             )}
 
-                    <button type='submit' disabled={loading}>
+                    <button className='btnLogin' type='submit' disabled={loading}>
                         {loading ? 'Submitting...' : 'Login'}
                     </button>
-            </form>
-                <h2>Don't have an account?</h2>
+
+                </form>
+                <div className='noaccountdiv'>
+                <h2 className='noaccount'>Don't have an account?</h2>
                 <Link to={'/Signup'}>
-                    <button type='submit'>Sign-up</button>
+                    <button className='btnSubmit' type='submit'>Sign-up</button>
                 </Link>
-        </div>
+                </div>
+                </>
+                ) : (
+                    <div>
+                        <h1>You're already logged in!</h1>
+                        <h2>Would you like to logout?</h2>
+                        <button onClick={handleLogout}>Logout</button>
+                    </div>    
+                )}
+
+                </div>
+
         </>
     );
 };

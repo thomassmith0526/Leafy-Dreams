@@ -19,7 +19,7 @@ const resolvers = {
                     userName: user.userName,
                     email: user.email,
                     password: user.password,
-                    plants: user.plant.map(plant => ({
+                    plant: user.plant.map(plant => ({
                         _id: plant._id,
                         name: plant.name
                     }))
