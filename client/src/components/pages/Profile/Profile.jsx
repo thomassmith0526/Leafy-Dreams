@@ -1,9 +1,8 @@
 import {useState, useEffect} from 'react'
 import { useSearchParams } from 'react-router-dom';
 import '../Profile/Profile.css'
-import SearchBarArea from '../../SearchBarArea/index';
-import SearchBarPlant from '../../SearchBarPlants/index';
-// import searchPlant from '../../SearchBarPlants/index'
+// import SearchBarArea from '../../SearchBarArea/index';
+// import SearchBarPlant from '../../SearchBarPlants/index';
 
 const Profile = () => {
     
@@ -127,15 +126,15 @@ const Profile = () => {
                 <h1>Profile</h1>
             </div>
             
-            <div className='Location'>
+            {/* <div className='Location'>
                 <SearchBarArea></SearchBarArea>
             </div>
             <div className='Planet'>
                 <SearchBarPlant></SearchBarPlant>
-            </div>
+            </div> */}
            
                 <div className='Recent'>
-                    <h2>Recent Searches</h2>
+                    <h2>Your Plants</h2>
                     {plant ? (
                             <div>
                                 {/* {plant._id.default_image.medium_url} */}
@@ -147,10 +146,10 @@ const Profile = () => {
                 </div>
             
 
-            <div className='History'>
+            {/* <div className='History'>
                 <h2>Your Zone</h2>
                 <h3>zone ##</h3>
-            </div>
+            </div> */}
             </div>
 
               {/* Personal Information Section */}

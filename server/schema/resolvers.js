@@ -10,6 +10,7 @@ const resolvers = {
                 throw new Error('Failed to fetch all users.');
             }
         },
+
         getUser: async (parent, { email }) => {
             try {
                 const user = await User.findOne({ email }).populate('plant');
@@ -27,7 +28,12 @@ const resolvers = {
             } catch (error) {
                 throw new Error('User not found.');
             }
-        },        
+        },   
+        
+        getUserPlants: async (_, { email }) => {
+            const user = await User.findOne({ email }).populate('plant');
+            return user ? user.plant : [];
+        },
         
     },
             
@@ -45,41 +51,38 @@ const resolvers = {
             throw new Error('Failed to create new user.');
           }
         },
-        // loginUser: async(_,{ email, password }) => {
-        //     console.log('User found successfully')
-        //     try {
-        //         const user = await User.findOne({email})
-        //         console.log(user)
-        //     if (!user) {
-        //             throw new Error('Failed to find Email');
-        //         }
-                
-        //         const correctPass = await user.isCorrectPass(password);
-        //     if (!correctPass) {
-        //             throw new Error('Incorrect Password');
 
-        //         }
-
-        //         return {user};
-        //     } catch(error) {
-        //         throw new Error('Failed to Login')
-        //     }
-        // },
-        //   updateUser: async (_, { _id, name, email }) => {
-        //     return await User.findByIdAndUpdate(_id, { name, email }, { new: true });
-        //   },
-        //   deleteUser: async (_, { _id }) => {
-        //     await User.findByIdAndDelete(_id);
-        //     return 'User deleted';
-        //   },
-
-        // findPlant: async (_, { state, name }) => {
-        //     const newPlant = new Plant({ state, name });
-        //     return await newPlant.save();
-        // },
-        // updatePlant: async (_, { userId, state, name }) => {
-        //     return await Plant.findByIdAndUpdate(userId, { state, name }, { new: true});
-        // }
+        addPlant: async (_, { email, commonName }) => {
+            console.log('Email:', email);
+            console.log('Common Name:', commonName);
+            try {
+                const user = await User.findOne({ email });
+                console.log(user);
+                if (!user) {
+                    throw new Error('User not found');
+                }
+                const existingPlant = await Plant.findOne({ commonName });
+                if (existingPlant) {
+                    const isPlantAdded = user.plant.some(plant => plant.commonName === commonName);
+                    if (isPlantAdded) {
+                        throw new Error('Plant already in database');
+                    }
+                    console.log('Plant already in database:', existingPlant);
+                    return user;
+                }
+                const newPlant = new Plant({ commonName });
+                await newPlant.save();
+                //maybe plant/plants is the issue
+                user.plant.push({ _id: newPlant._id, commonName });
+                await user.save();
+                await user.populate('plant');
+                console.log('Plant added to user:', user);
+                return user;
+            } catch (error) {
+                console.error('Error in addPlant:', error.message);
+                throw new Error(error.message);
+            }
+        },
     },
 };
 
