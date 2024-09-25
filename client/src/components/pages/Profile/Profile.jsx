@@ -137,14 +137,13 @@ const Profile = () => {
            
                 <div className='Recent'>
                     <h2>Your Plants</h2>
-                    {plant ? (
-                            <div>
-                                {/* {plant._id.default_image.medium_url} */}
-                                {searchPlant}
-                            </div>
-                        ) : (
-                            <p>Loading...</p>
-                        )}
+                    <p>{user.plant.length > 0 ? (
+                        user.plant.map((plant) => (
+                            <span key={plant._id}>{plant.commonName}<br></br></span>
+                        ))                       
+                    ) : (
+                        <span>No plants added</span>
+                    )}</p>
                 </div>
             
 
