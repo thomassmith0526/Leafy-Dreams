@@ -45,6 +45,11 @@ const Home = () => {
                  <h1>Info about Plant Finder</h1><br></br>
                  <h2>Here you will find...</h2>
                 </div>
+            </div>
+            <div className='benefitsdiv'>
+                <div className='benefits'>
+                    <h3>Benefits of our site:</h3>
+                </div>
             </div> 
         </div>
         </>

@@ -117,14 +117,16 @@ const Login = () => {
                     </div>
             )}
 
-                    <button type='submit' disabled={loading}>
+                    <button className='btnLogin' type='submit' disabled={loading}>
                         {loading ? 'Submitting...' : 'Login'}
                     </button>
                 </form>
-                <h2>Don't have an account?</h2>
+                <div className='noaccountdiv'>
+                <h2 className='noaccount'>Don't have an account?</h2>
                 <Link to={'/Signup'}>
-                    <button type='submit'>Sign-up</button>
+                    <button className='btnSubmit' type='submit'>Sign-up</button>
                 </Link>
+                </div>
                 </>
                 ) : (
                     <div>
