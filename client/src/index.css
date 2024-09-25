@@ -30,13 +30,13 @@
     margin-right: 2%;
   }
   
-  /* .buttonBox {
+  .buttonBox {
     display: flex;
     justify-content: space-between;
     width: 25%;
     margin-right: 5%;
   }
-   */
+  
   .buttonBox button {
     border-radius: 5px;
     color: rgb(241, 244, 247);
