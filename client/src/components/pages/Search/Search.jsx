@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import './Search.css';
 import SearchModal from './SearchModal.jsx';
 import { useMutation } from '@apollo/client';
@@ -17,6 +17,7 @@ const Search = () => {
     const [selectedPlantId, setSelectedPlantId] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
 
     const [addPlant] = useMutation(ADD_USER_PLANT_MUTATION, {
         onError: (error) => {
@@ -26,24 +27,6 @@ const Search = () => {
             console.log('Plant added:', data);
         }
     });
-
-    const fetchPlants = async () => {
-        setLoading(true);
-        setError(null);
-        try {
-            const response = await fetch('https://perenual.com/api/species-list?key=sk-hjux66ef51ce55fd36940&q');
-            if (!response.status) {
-                throw new Error('Network response not ok');
-            }
-            const data = await response.json();
-            setPlants(data.data);
-            console.log(data.data);
-        } catch (error) {
-            setError(error.message);
-        } finally {
-            setLoading(false);
-        }
-    };
 
     const fetchPlantDetails = async (plantId) => {
         console.log('Fetching details for Plant ID:', plantId);
@@ -95,14 +78,45 @@ const Search = () => {
         }
     };
 
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    useEffect(() => {
+        const fetchPlants = async () => {
+            if (searchTerm.trim() === '') {
+                setPlants([]);
+                return;
+            }
+            setLoading(true);
+            setError(null);
+            try {
+                const response = await fetch(`https://perenual.com/api/species-list?key=sk-hjux66ef51ce55fd36940&q=${searchTerm}`);
+                if (!response.ok) {
+                    throw new Error('Response was not okay');
+                }
+                const data = await response.json();
+                setPlants(data.data.slice(0, 24));
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        const debounceFetch = setTimeout(() => {
+            fetchPlants();
+        }, 300);
+
+        return () => clearTimeout(debounceFetch);
+    }, [searchTerm]);
+
 
     return (
         <>
         <div className="searchBody">
             <h1>Search Plants</h1>
-            <button onClick={fetchPlants} disabled={loading}>
-                {loading ? 'Loading...' : 'Fetch Plants'}
-            </button>
+            <input type='text' value={searchTerm} onChange={handleSearchChange} placeholder='Search for plants here!' />
             {error && <p>Error: {error}</p>}
 
             <div className='searchResults'>
