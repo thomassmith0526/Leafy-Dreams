@@ -1,8 +1,8 @@
-
 :root {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    
 }
 
 .headerNav {
@@ -18,8 +18,16 @@
     color: #FAEDCE !important;
 }
 
+.buttonBox {
+    display: flex;
+    justify-content: space-between;
+    width: 15% !important;
+    margin-right: 5% !important;
+  }
+
 .navBtn {
     background-color: #FAEDCE !important;
     color: #914F1E !important;
     border: solid 2px #CCD5AE;
+    
 }

@@ -35,7 +35,7 @@
     padding-top: 1%;
     float: left;
     width: 50%;
-    border: solid 1px #914F1E;
+    border: solid 3px #914F1E;
     background-color: #CCD5AE;
 }
  .column1 h1, .column2 h1 {
@@ -45,6 +45,24 @@
  .column1 h2, .column2 h2 {
     color: #914F1E;
  }
+
+ .benefitsdiv {
+    display: flex;
+    align-content: space-around;
+    margin: 1% ;
+    text-align: center;
+    width: 50vh;
+    height: 30vh;
+    border: solid 1px #914F1E;
+}
+
+.benefits {
+    padding-top: 2%;
+    float: left;
+    width: 100%;
+    border: solid 1px #914F1E;
+    background-color: #CCD5AE;
+}
 
 
  /* Leaving in the below css just in case we revert back to stacked boxes and not side by side boxes. */
