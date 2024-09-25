@@ -99,7 +99,7 @@ const Search = () => {
     return (
         <>
         <div className="searchBody">
-            <h1>Search</h1>
+            <h1>Search Plants</h1>
             <button onClick={fetchPlants} disabled={loading}>
                 {loading ? 'Loading...' : 'Fetch Plants'}
             </button>
@@ -110,6 +110,7 @@ const Search = () => {
                     <ul>
                         {plants.map((plant) => (
                             <li key={plant.id}>
+                                <div className='thumbSquare'>
                                 {plant.default_image?.thumbnail ? (
                                     <img src={plant.default_image.thumbnail} alt={plant.common_name} />
                                 ) : (
@@ -120,6 +121,7 @@ const Search = () => {
                                         {plant.common_name || 'No search results'}
                                     </button>
                                 </p>
+                                </div>
                             </li>
                         ))}
                     </ul>
