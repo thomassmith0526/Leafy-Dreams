@@ -49,7 +49,7 @@ function App() {
               <button className='navBtn'>Login</button>
               </Link>
             ) : ( 
-              <button onClick={handleLogout} className='navBtn'><Link to="/login" >Logout</Link></button>
+              <Link to="/login" ><button onClick={handleLogout} className='navBtn'>Logout</button></Link>
             )}
           
 
