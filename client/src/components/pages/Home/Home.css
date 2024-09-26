@@ -28,7 +28,7 @@
     margin: 2% ;
     text-align: center;
     width: 90vh;
-    height: 47vh;
+    height: 30vh;
 }
 
 .column1, .column2 {
@@ -55,7 +55,7 @@
     margin: 1% ;
     text-align: center;
     width: 50vh;
-    height: 30vh;
+    height: 20vh;
     border: solid 1px #914F1E;
 }
 
