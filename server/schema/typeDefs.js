@@ -25,7 +25,13 @@ const typeDefs = gql`
     signupUser(userName: String!, email: String!, password: String!): User
     loginUser(email: String!, password: String!): User
     addPlant(email: String!, commonName: String!, thumbNail: String): User
+    deletePlant(email: String!, plantId: ID!): DeletePlantResponse!
   }
+
+  type DeletePlantResponse {
+    success: Boolean!
+    message: String
+  } 
 
 `;
 

@@ -8,6 +8,7 @@ main {
     background-color: #FEFAE0;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(8, 8, 8, 0.1);
+    height: 81vh;
 }
 
 /* Title section */
@@ -151,6 +152,7 @@ body .fc-icon {
 .profile-header .profile-header-content {
     color: #fff;
     padding: 1.8rem;
+}
 /* }
 body .fc th a,
 body .fc-ltr .fc-basic-view .fc-day-top .fc-day-number,
@@ -162,7 +164,7 @@ body .fc-widget-header a {
     width: 7.5rem;
     height: 7.5rem;
     overflow: hidden;
-    z-index: 10;
+    /* z-index: 10; */
     margin: 0 1.25rem -1.25rem 0;
     padding: 0.18rem;
     -webkit-border-radius: 0.25rem;
@@ -196,3 +198,24 @@ body .fc-widget-header a {
     .profile-container {
         padding: 0.9375rem 0.9375rem 3.6875rem;
     }
+
+.delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    margin-left: 2%;
+}
+
+.delete-button img {
+    width: 70px;
+    height: 70px;
+    fill: currentColor;
+}
+
+.delete-button:hover {
+    background: transparent;
+    color: inherit;
+    opacity: 1;
+}

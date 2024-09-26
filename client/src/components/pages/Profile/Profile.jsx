@@ -3,9 +3,13 @@ import '../Profile/Profile.css';
 import { AuthContext } from '../../../utils/AuthContext';
 import noImage from '../../../assets/images/no-image-found.webp';
 import SearchModal from '../Search/SearchModal';
+import { DELETE_USER_PLANT_MUTATION } from '../../../utils/Mutation';
+import { useMutation } from '@apollo/client';
+import trashIcon from '../../../assets/images/bigtrashcan.svg';
 
 const Profile = () => {
-    const { user } = useContext(AuthContext);
+    const { user, updateUserPlants } = useContext(AuthContext);
+    const [deletePlant] = useMutation(DELETE_USER_PLANT_MUTATION);
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -50,6 +54,24 @@ const Profile = () => {
     const closeModal = () => {
         setIsModalOpen(false);
         setPlantDetails(null);
+    };
+
+    const handleRemovePlant = async (plantId) => {
+        console.log(user);
+        console.log(plantId);
+        console.log(typeof plantId);
+        try {
+            const { data } = await deletePlant({ variables: { email: user.email, plantId }});
+            console.log(data);
+            if (data.deletePlant.success) {
+                const updatedPlants = user.plant.filter(plant => plant._id !== plantId);
+                updateUserPlants(updatedPlants);
+            } else {
+                console.error(data.deletePlant.message);
+            }
+        } catch (error) {
+            console.error('Error removing plant:', error);
+        }
     };
 
     return (
@@ -105,6 +127,9 @@ const Profile = () => {
                                 <span>{plant.commonName}<br></br></span>
                             </div>
                             </button>
+                            <button className='delete-button' onClick={() => handleRemovePlant(plant._id)}>
+                                <img src={trashIcon} alt='Delete' />
+                            </button>
                             <br />
                             </div>
                         ))                     
@@ -135,9 +160,11 @@ const Profile = () => {
                             {plantDetails.plant_anatomy?.length > 0 ? (
                                 <ul>
                                     {plantDetails.plant_anatomy?.map((anatomy, index) => (
-                                        <li key={index}>
-                                            {anatomy.part}: {anatomy.color.join(', ') || 'N/A'}
-                                        </li>
+                                        <div key={index}>
+                                            <li>
+                                                {anatomy.part}: {anatomy.color.join(', ') || 'N/A'}
+                                            </li>
+                                        </div>
                                     ))}
                                 </ul>
                             ) : (

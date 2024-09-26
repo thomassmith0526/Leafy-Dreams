@@ -17,6 +17,7 @@
     width: 80vw;
     height: 80vh;
     position: relative;
+    overflow-y: auto;
 }
 
 .close-button {

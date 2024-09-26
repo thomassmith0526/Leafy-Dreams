@@ -15,3 +15,12 @@ export const ADD_USER_PLANT_MUTATION = gql`
         }
     }
 `;
+
+export const DELETE_USER_PLANT_MUTATION = gql`
+    mutation DeletePlant($email: String!, $plantId: ID!) {
+        deletePlant(email: $email, plantId: $plantId) {
+            success
+            message
+        }
+    }
+`;
