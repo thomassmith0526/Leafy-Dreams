@@ -111,6 +111,7 @@ const Signup = () => {
                             <label className="form-label">Username:</label>
                             <input
                                 type="text"
+                                className='textinput'
                                 name="userName"
                                 placeholder="Enter Your Username"
                                 value={signupState.userName}

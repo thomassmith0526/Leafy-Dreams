@@ -40,9 +40,9 @@ body {
 
 .btnSubmit {
     margin: 2%;
-    width: 25%;
+    width: 15%;
     position: absolute;
-    left: 35%;
+    left: 40%;
     background-color: #914F1E;
     color: #F7DCB9;
 }
