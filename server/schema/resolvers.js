@@ -85,6 +85,25 @@ const resolvers = {
                 throw new Error(error.message);
             }
         },
+
+        deletePlant: async (_, { email, plantId }) => {
+            try {
+                const user = await User.findOne({ email });
+                if (!user) {
+                    throw new Error('User not found');
+                }
+                const plantExists = user.plant.some(plant => plant._id.equals(plantId));
+                if (!plantExists) {
+                    throw new Error('Plant not found');
+                }
+                user.plant = user.plant.filter(plant => !plant._id.equals(plantId));
+                await user.save();
+                return { success: true, message: 'Plant removed!'};
+            } catch (error) {
+                console.error('Error with deletePlant:', error.message);
+                throw new Error(error.message);
+            }
+        },
     },
 };
 
