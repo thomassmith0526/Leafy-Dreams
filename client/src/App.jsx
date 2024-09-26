@@ -40,9 +40,11 @@ function App() {
             <button className='navBtn'>Home</button>
           </Link>
 
-          <Link to="/signup">
-            <button className='navBtn'>Sign Up</button>
-          </Link>
+          {!isLoggedIn ? (
+              <Link to="/signup">
+              <button className='navBtn'>Signup</button>
+              </Link>
+            ) : null}
 
             {!isLoggedIn ? (
               <Link to="/login">
@@ -53,9 +55,11 @@ function App() {
             )}
           
 
-          <Link to="/profile">
-            <button className='navBtn'>Profile</button>
-          </Link>
+          {isLoggedIn ? (
+              <Link to="/profile">
+              <button className='navBtn'>Profile</button>
+              </Link>
+            ) : null}
 
           <Link to="/search">
             <button className='navBtn'>Search Test</button>
